@@ -1,0 +1,28 @@
+# Rust
+logseq-owl-extractor/target/
+logseq-owl-extractor/Cargo.lock
+
+# Generated ontology files
+*.ofn
+*.owl
+*.rdf
+*.ttl
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logseq
+.logseq/
+logseq/
+
+# Temporary files
+*.tmp
+*.bak

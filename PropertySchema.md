@@ -85,6 +85,50 @@ owl:functional-syntax:: |
   ObjectPropertyDomain(mv:bindsTo ObjectUnionOf(mv:PhysicalEntity mv:VirtualEntity mv:HybridEntity))
   ObjectPropertyRange(mv:bindsTo ObjectUnionOf(mv:PhysicalEntity mv:VirtualEntity))
 
+### Representation
+
+#### represents
+
+owl:iri:: mv:represents
+owl:type:: ObjectProperty
+owl:domain:: mv:Entity
+owl:range:: mv:Entity
+owl:functional-syntax:: |
+  Declaration(ObjectProperty(mv:represents))
+  ObjectPropertyDomain(mv:represents mv:Entity)
+  ObjectPropertyRange(mv:represents mv:Entity)
+
+### Execution/Deployment
+
+#### runsOn
+
+owl:iri:: mv:runsOn
+owl:type:: ObjectProperty
+owl:domain:: mv:Software
+owl:range:: mv:Hardware
+owl:functional-syntax:: |
+  Declaration(ObjectProperty(mv:runsOn))
+  ObjectPropertyDomain(mv:runsOn mv:Software)
+  ObjectPropertyRange(mv:runsOn mv:Hardware)
+
+### Architectural Classification
+
+#### implementedInLayer
+
+owl:iri:: mv:implementedInLayer
+owl:type:: ObjectProperty
+owl:domain:: mv:Entity
+owl:range:: mv:ArchitectureLayer
+owl:functional-syntax:: |
+  Declaration(ObjectProperty(mv:implementedInLayer))
+  Declaration(Class(mv:ArchitectureLayer))
+  SubClassOf(mv:ArchitectureLayer mv:AbstractConcept)
+  ObjectPropertyDomain(mv:implementedInLayer mv:Entity)
+  ObjectPropertyRange(mv:implementedInLayer mv:ArchitectureLayer)
+
+  Declaration(Class(mv:UserExperienceLayer))
+  SubClassOf(mv:UserExperienceLayer mv:ArchitectureLayer)
+
 ## Data Properties
 
 ### Identification

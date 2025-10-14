@@ -110,16 +110,38 @@ owl:functional-syntax:: |
     # ========================================
     # INTERSECTION CLASSES (for automatic classification)
     # ========================================
+    # These 9 classes are defined as intersections of the two orthogonal dimensions.
+    # A reasoner will automatically classify entities into these based on their properties.
+
+    # Physicality × Agent
+    Declaration(Class(mv:PhysicalAgent))
+    EquivalentClasses(mv:PhysicalAgent ObjectIntersectionOf(mv:PhysicalEntity mv:Agent))
+
     Declaration(Class(mv:VirtualAgent))
     EquivalentClasses(mv:VirtualAgent ObjectIntersectionOf(mv:VirtualEntity mv:Agent))
 
+    Declaration(Class(mv:HybridAgent))
+    EquivalentClasses(mv:HybridAgent ObjectIntersectionOf(mv:HybridEntity mv:Agent))
+
+    # Physicality × Object
     Declaration(Class(mv:PhysicalObject))
     EquivalentClasses(mv:PhysicalObject ObjectIntersectionOf(mv:PhysicalEntity mv:Object))
+
+    Declaration(Class(mv:VirtualObject))
+    EquivalentClasses(mv:VirtualObject ObjectIntersectionOf(mv:VirtualEntity mv:Object))
 
     Declaration(Class(mv:HybridObject))
     EquivalentClasses(mv:HybridObject ObjectIntersectionOf(mv:HybridEntity mv:Object))
 
-    # ... (and the other 6 intersection classes are defined similarly)
+    # Physicality × Process
+    Declaration(Class(mv:PhysicalProcess))
+    EquivalentClasses(mv:PhysicalProcess ObjectIntersectionOf(mv:PhysicalEntity mv:Process))
+
+    Declaration(Class(mv:VirtualProcess))
+    EquivalentClasses(mv:VirtualProcess ObjectIntersectionOf(mv:VirtualEntity mv:Process))
+
+    Declaration(Class(mv:HybridProcess))
+    EquivalentClasses(mv:HybridProcess ObjectIntersectionOf(mv:HybridEntity mv:Process))
 
     # ========================================
     # TECHNOLOGY STACK ABSTRACTIONS

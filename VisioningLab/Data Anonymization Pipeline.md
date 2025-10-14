@@ -2,7 +2,7 @@
   id:: data-anonymization-pipeline-ontology
   collapsed:: true
 	- metaverseOntology:: true
-	- term-id:: 20107
+	- term-id:: 20200
 	- preferred-term:: Data Anonymization Pipeline
 	- definition:: An automated, multi-stage process that systematically removes, masks, or generalizes personally identifiable information (PII) from datasets to protect individual privacy while preserving data utility for analysis.
 	- maturity:: mature
@@ -12,18 +12,18 @@
 	- owl:role:: Process
 	- owl:inferred-class:: mv:VirtualProcess
 	- owl:functional-syntax:: true
-	- belongsToDomain:: [[DataManagementDomain]], [[PrivacyAndSecurityDomain]], [[TrustAndGovernanceDomain]]
+	- belongsToDomain:: [[TrustAndGovernanceDomain]]
 	- implementedInLayer:: [[Data Layer]], [[Middleware Layer]]
 	- #### Relationships
 	  id:: data-anonymization-pipeline-relationships
-		- has-part:: [[De-identification Module]], [[Generalization Engine]], [[Suppression Filter]], [[Perturbation Function]]
+		- has-part:: [[De-identification Module]], [[Generalization Engine]], [[Suppression Filter]], [[Perturbation Function]], [[PII Detector]], [[Risk Assessor]]
 		- is-part-of:: [[Privacy Engineering]], [[Data Governance]], [[Compliance Framework]]
 		- requires:: [[Privacy Policy]], [[Risk Assessment]], [[Data Classification]]
-		- depends-on:: [[PII Detection]], [[Identity Management]], [[Access Control]]
-		- enables:: [[Privacy-Preserving Analytics]], [[Secure Data Sharing]], [[GDPR Compliance]]
-		- related-to:: [[Differential Privacy]], [[K-Anonymity]], [[Data Masking]], [[Pseudonymization]]
+		- depends-on:: [[PII Detection]], [[Identity Management]], [[Access Control]], [[Data Protection]]
+		- enables:: [[Privacy-Preserving Analytics]], [[Secure Data Sharing]], [[GDPR Compliance]], [[Differential Privacy]]
+		- related-to:: [[K-Anonymity]], [[Data Masking]], [[Pseudonymization]], [[Synthetic Data Generation]], [[Data Provenance]]
 	- #### OWL Axioms
-	  id:: data-anonymization-pipeline-ontology-owl-axioms
+	  id:: data-anonymization-pipeline-owl-axioms
 	  collapsed:: true
 		- ```clojure
 		  Declaration(Class(mv:DataAnonymizationPipeline))
@@ -32,7 +32,6 @@
 		  SubClassOf(mv:DataAnonymizationPipeline mv:VirtualEntity)
 		  SubClassOf(mv:DataAnonymizationPipeline mv:Process)
 
-		  # Domain-specific constraints
 		  # Data Anonymization Pipeline processes at least one dataset
 		  SubClassOf(mv:DataAnonymizationPipeline
 		    ObjectMinCardinality(1 mv:processes mv:Dataset)
@@ -73,15 +72,22 @@
 		    ObjectSomeValuesFrom(mv:maintainsAuditTrail mv:ProvenanceRecord)
 		  )
 
+		  # Data Anonymization Pipeline implements privacy controls
+		  SubClassOf(mv:DataAnonymizationPipeline
+		    ObjectSomeValuesFrom(mv:implementsControl mv:DataProtection)
+		  )
+
+		  # Data Anonymization Pipeline validates anonymization quality
+		  SubClassOf(mv:DataAnonymizationPipeline
+		    ObjectSomeValuesFrom(mv:validates mv:AnonymizationQualityMetric)
+		  )
+
+		  # Data Anonymization Pipeline preserves data utility
+		  SubClassOf(mv:DataAnonymizationPipeline
+		    ObjectSomeValuesFrom(mv:preserves mv:DataUtilityMetric)
+		  )
+
 		  # Domain classification
-		  SubClassOf(mv:DataAnonymizationPipeline
-		    ObjectSomeValuesFrom(mv:belongsToDomain mv:DataManagementDomain)
-		  )
-
-		  SubClassOf(mv:DataAnonymizationPipeline
-		    ObjectSomeValuesFrom(mv:belongsToDomain mv:PrivacyAndSecurityDomain)
-		  )
-
 		  SubClassOf(mv:DataAnonymizationPipeline
 		    ObjectSomeValuesFrom(mv:belongsToDomain mv:TrustAndGovernanceDomain)
 		  )
@@ -227,4 +233,6 @@
 		- [[Synthetic Data Generation]] - Creating artificial datasets matching real data distributions
 		- [[Privacy-Preserving Analytics]] - Analytical techniques operating on encrypted or anonymized data
 		- [[Federated Learning]] - Machine learning without centralizing raw data
+		- [[Data Protection]] - Broader framework for safeguarding personal data
+		- [[Data Provenance]] - Tracking data lineage and transformation history
 		- [[VirtualProcess]] - Ontology classification as a virtual computational workflow

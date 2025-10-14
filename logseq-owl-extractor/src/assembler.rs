@@ -1,4 +1,4 @@
-use anyhow::{Context, Result};
+use anyhow::Result;
 
 /// Assembles OWL Functional Syntax fragments into a complete ontology
 pub struct OntologyAssembler {
@@ -87,7 +87,7 @@ impl OntologyAssembler {
     /// Validate the ontology using horned-owl
     pub fn validate(&self) -> Result<()> {
         use horned_functional::from_str;
-        use horned_owl::model::SetOntology;
+        use horned_owl::ontology::set::SetOntology;
 
         let ontology_text = self.to_string();
 

@@ -5,29 +5,44 @@ A formal ontology for metaverse concepts using an innovative hybrid approach tha
 ## 🌟 Key Features
 
 - **Orthogonal Classification**: Two-dimensional design (Physicality × Role) enabling automatic inference of 9 intersection classes
-- **Hybrid Format**: Logseq properties for navigation + embedded OWL axioms for reasoning
+- **Logseq-Native Format**: Pure outline format with collapsed blocks, queryable properties, and section IDs
 - **Automated Extraction**: Rust tool to parse Logseq files and generate complete OWL ontology
 - **OWL 2 DL Compliant**: Full support for formal reasoning and consistency checking
-- **horned-owl Compatible**: Uses OWL Functional Syntax that can be directly parsed
+- **Dual Purpose**: Human-readable in Logseq, machine-extractable for reasoners
+- **ETSI Aligned**: Domain classification based on ETSI metaverse standards
 
 ## 📁 Project Structure
 
 ```
 OntologyDesign/
 ├── README.md                          # This file
-├── QUICKSTART.md                      # 5-minute setup guide
-├── IMPLEMENTATION_STATUS.md           # Detailed status of all issues resolved
-├── URIMapping.md                      # Wikilink → IRI conversion rules
 │
-├── OntologyDefinition.md             # Ontology header, base classes, axioms
-├── PropertySchema.md                  # All object/data/annotation properties
-├── ETSIDomainClassification.md       # ETSI domain taxonomy
-├── ValidationTests.md                 # Test cases for reasoning
+├── docs/                              # 📚 Documentation
+│   ├── guides/
+│   │   ├── QUICKSTART.md             # 5-minute setup guide
+│   │   └── MIGRATION_GUIDE.md        # How to migrate concepts
+│   ├── reference/
+│   │   ├── TEMPLATE.md               # Standard concept format template
+│   │   ├── FORMAT_STANDARDIZED.md    # Complete format specification
+│   │   ├── URIMapping.md             # Wikilink → IRI conversion rules
+│   │   └── LOGSEQ_TAG_USAGE.md       # Using metaverseOntology tag
+│   ├── IMPLEMENTATION_STATUS.md      # Feature completion status
+│   ├── MIGRATION_STATUS.md           # 260+ concept migration progress
+│   └── task.md                       # Original design requirements
 │
-├── Avatar.md                          # Example: VirtualAgent class
-├── DigitalTwin.md                     # Example: HybridObject class
+├── OntologyDefinition.md             # 🎯 Core ontology header & base classes
+├── PropertySchema.md                  # 🔗 All object/data/annotation properties
+├── ETSIDomainClassification.md       # 🏛️ ETSI domain taxonomy
+├── ValidationTests.md                 # ✅ Test cases for reasoning
 │
-└── logseq-owl-extractor/             # Rust extraction tool
+├── Avatar.md                          # 📘 Example: VirtualAgent class
+├── DigitalTwin.md                     # 📗 Example: HybridObject class
+│
+├── VisioningLab/                      # 🔬 260+ concept files
+│   ├── Game Engine.md                # Example: VirtualObject class
+│   └── [...]                         # (migration in progress)
+│
+└── logseq-owl-extractor/             # 🦀 Rust extraction tool
     ├── Cargo.toml                     # Dependencies
     ├── README.md                      # Tool documentation
     └── src/
@@ -65,7 +80,7 @@ protege metaverse-ontology.ofn
 whelk classify metaverse-ontology.ofn
 ```
 
-📖 **See [QUICKSTART.md](QUICKSTART.md) for detailed instructions.**
+📖 **See [docs/guides/QUICKSTART.md](docs/guides/QUICKSTART.md) for detailed instructions.**
 
 ## 🎯 Design Philosophy
 
@@ -88,80 +103,144 @@ This allows:
 - Automatic classification by reasoners
 - Clean separation of concerns
 
-### Hybrid Logseq + OWL Format
+### Logseq-Native Format
 
-Each concept is defined in a Logseq markdown file with:
+Each concept is defined in a pure Logseq outline format:
 
-1. **Logseq Properties** (for humans):
-   ```markdown
-   term-id:: 20067
-   has-part:: [[Visual Mesh]], [[Animation Rig]]
-   requires:: [[3D Rendering Engine]]
-   ```
-
-2. **OWL Functional Syntax** (for reasoners):
-   ```markdown
-   owl:functional-syntax:: |
-     Declaration(Class(mv:Avatar))
-     SubClassOf(mv:Avatar mv:VirtualEntity)
-     SubClassOf(mv:Avatar mv:Agent)
-   ```
+```markdown
+- ### OntologyBlock
+  id:: avatar-ontology
+  collapsed:: true
+	- metaverseOntology:: true
+	- term-id:: 20067
+	- preferred-term:: Avatar
+	- definition:: Digital representation of a person...
+	- owl:class:: mv:Avatar
+	- owl:physicality:: VirtualEntity
+	- owl:role:: Agent
+	- owl:inferred-class:: mv:VirtualAgent
+	- #### Relationships
+	  id:: avatar-relationships
+		- has-part:: [[Visual Mesh]], [[Animation Rig]]
+		- requires:: [[3D Rendering Engine]]
+	- #### OWL Axioms
+	  id:: avatar-owl-axioms
+	  collapsed:: true
+		- ```clojure
+		  Declaration(Class(mv:Avatar))
+		  SubClassOf(mv:Avatar mv:VirtualEntity)
+		  SubClassOf(mv:Avatar mv:Agent)
+		  ```
+- ## About Avatars
+	- Human-readable description and examples...
+```
 
 **Benefits:**
-- ✅ Searchable and navigable in Logseq
-- ✅ Formal reasoning with OWL 2 DL reasoners
-- ✅ Version control friendly (plain markdown)
-- ✅ Human-readable and machine-processable
+- ✅ **Tidy**: Everything collapses into ### OntologyBlock
+- ✅ **Queryable**: `metaverseOntology:: true` tag enables Logseq queries
+- ✅ **Referenceable**: Section IDs allow block references
+- ✅ **Readable**: Clojure syntax highlighting for OWL code
+- ✅ **Extractable**: Parser extracts properties and OWL blocks
+- ✅ **Documented**: Human context in "About" section
+- ✅ **Linked**: WikiLinks create knowledge graph
 
 ## 📚 Documentation
 
+### Getting Started
 | Document | Description |
 |----------|-------------|
-| [QUICKSTART.md](QUICKSTART.md) | Get started in 5 minutes |
-| [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md) | Detailed status of all features |
-| [URIMapping.md](URIMapping.md) | Wikilink to IRI conversion rules |
-| [task.md](task.md) | Original requirements and design analysis |
+| [QUICKSTART.md](docs/guides/QUICKSTART.md) | Get started in 5 minutes |
+| [MIGRATION_GUIDE.md](docs/guides/MIGRATION_GUIDE.md) | How to migrate VisioningLab concepts |
+
+### Reference
+| Document | Description |
+|----------|-------------|
+| [TEMPLATE.md](docs/reference/TEMPLATE.md) | Standard concept format template |
+| [FORMAT_STANDARDIZED.md](docs/reference/FORMAT_STANDARDIZED.md) | Complete format specification |
+| [URIMapping.md](docs/reference/URIMapping.md) | Wikilink to IRI conversion rules |
+| [LOGSEQ_TAG_USAGE.md](docs/reference/LOGSEQ_TAG_USAGE.md) | Using metaverseOntology tag for queries |
+
+### Project Status
+| Document | Description |
+|----------|-------------|
+| [IMPLEMENTATION_STATUS.md](docs/IMPLEMENTATION_STATUS.md) | All 6 issues resolved ✅ |
+| [MIGRATION_STATUS.md](docs/MIGRATION_STATUS.md) | 260+ concept migration progress |
+| [task.md](docs/task.md) | Original requirements and design analysis |
+
+### Tools
+| Document | Description |
+|----------|-------------|
 | [logseq-owl-extractor/README.md](logseq-owl-extractor/README.md) | Extractor tool documentation |
 
-## 🧪 Example Classes
+## 🧪 Example Concepts
 
-### Avatar (VirtualAgent)
+### [Avatar.md](Avatar.md) - VirtualAgent
 
-```markdown
-# Avatar
+**Classification:**
+- `owl:physicality:: VirtualEntity`
+- `owl:role:: Agent`
+- `owl:inferred-class:: mv:VirtualAgent` ✅
 
-owl:physicality-dimension:: VirtualEntity
-owl:role-dimension:: Agent
+**Key Properties:**
+- Represents exactly one user or AI agent
+- Requires 3D Rendering Engine
+- Enables User Embodiment and Social Presence
+- Has parts: Visual Mesh, Animation Rig
 
-owl:functional-syntax:: |
-  Declaration(Class(mv:Avatar))
-  SubClassOf(mv:Avatar mv:VirtualEntity)
-  SubClassOf(mv:Avatar mv:Agent)
-  SubClassOf(mv:Avatar
-    ObjectExactCardinality(1 mv:represents mv:Agent)
-  )
+**OWL Axioms:**
+```owl
+Declaration(Class(mv:Avatar))
+SubClassOf(mv:Avatar mv:VirtualEntity)
+SubClassOf(mv:Avatar mv:Agent)
+SubClassOf(mv:Avatar
+  ObjectExactCardinality(1 mv:represents mv:Agent)
+)
 ```
 
-➡️ Reasoner infers: `Avatar ⊑ VirtualAgent`
+➡️ **Reasoner infers:** `Avatar ⊑ VirtualAgent`
 
-### Digital Twin (HybridObject)
+---
 
-```markdown
-# Digital Twin
+### [DigitalTwin.md](DigitalTwin.md) - HybridObject
 
-owl:physicality-dimension:: HybridEntity
-owl:role-dimension:: Object
+**Classification:**
+- `owl:physicality:: HybridEntity`
+- `owl:role:: Object`
+- `owl:inferred-class:: mv:HybridObject` ✅
 
-owl:functional-syntax:: |
-  Declaration(Class(mv:DigitalTwin))
-  SubClassOf(mv:DigitalTwin mv:HybridEntity)
-  SubClassOf(mv:DigitalTwin mv:Object)
-  SubClassOf(mv:DigitalTwin
-    ObjectExactCardinality(1 mv:synchronizesWith mv:PhysicalEntity)
-  )
+**Key Properties:**
+- Binds physical entity to virtual representation
+- Synchronizes data in real-time
+- Requires IoT sensors and data streams
+- Implemented in Infrastructure Layer
+
+**OWL Axioms:**
+```owl
+Declaration(Class(mv:DigitalTwin))
+SubClassOf(mv:DigitalTwin mv:HybridEntity)
+SubClassOf(mv:DigitalTwin mv:Object)
+SubClassOf(mv:DigitalTwin
+  ObjectExactCardinality(1 mv:synchronizesWith mv:PhysicalEntity)
+)
 ```
 
-➡️ Reasoner infers: `DigitalTwin ⊑ HybridObject`
+➡️ **Reasoner infers:** `DigitalTwin ⊑ HybridObject`
+
+---
+
+### [VisioningLab/Game Engine.md](VisioningLab/Game%20Engine.md) - VirtualObject
+
+**Classification:**
+- `owl:physicality:: VirtualEntity`
+- `owl:role:: Object`
+- `owl:inferred-class:: mv:VirtualObject` ✅
+
+**Key Properties:**
+- Software platform for real-time 3D experiences
+- Has parts: Rendering Pipeline, Physics Engine, Asset Manager
+- Belongs to InfrastructureDomain and CreativeMediaDomain
+
+➡️ **Reasoner infers:** `GameEngine ⊑ VirtualObject`
 
 ## ✅ Validation Tests
 
@@ -174,23 +253,66 @@ The ontology includes test cases for:
 
 See [ValidationTests.md](ValidationTests.md) for details.
 
+## 💡 Use Cases
+
+### 1. Metaverse Interoperability Standards
+- Define common vocabulary for cross-platform metaverse systems
+- Enable semantic interoperability between virtual worlds
+- Support ETSI and ISO metaverse standardization efforts
+
+### 2. Knowledge Graph Construction
+- Build queryable knowledge base of metaverse concepts
+- Link related concepts through formal relationships
+- Support semantic search and discovery
+
+### 3. Application Development
+- Reference ontology for metaverse platform architects
+- Semantic validation of system designs
+- Documentation and communication tool for teams
+
+### 4. Research & Analysis
+- Classify emerging metaverse technologies
+- Track evolution of metaverse concepts over time
+- Identify gaps and opportunities in the metaverse stack
+
+### 5. Automated Reasoning
+- Automatically infer concept classifications
+- Detect inconsistencies in system designs
+- Validate architectural constraints
+
 ## 🔧 Technology Stack
 
-- **Format**: OWL 2 DL (Web Ontology Language)
-- **Syntax**: OWL Functional Syntax
-- **Parser**: horned-owl + horned-functional (Rust)
-- **Reasoner**: Compatible with HermiT, Pellet, whelk-rs, etc.
-- **Editor**: Logseq (or any markdown editor)
-- **Viewer**: Protégé (optional)
+| Component | Technology | Purpose |
+|-----------|-----------|---------|
+| **Ontology Language** | OWL 2 DL | Formal knowledge representation |
+| **Syntax** | OWL Functional Syntax | Machine-readable axioms |
+| **Source Format** | Logseq Markdown | Human-readable editing |
+| **Parser/Validator** | horned-owl (Rust) | OWL parsing and validation |
+| **Reasoner** | HermiT, Pellet, whelk-rs | Automatic classification and consistency checking |
+| **Knowledge Editor** | Logseq | Visual outliner for navigation |
+| **Ontology Viewer** | Protégé | GUI for visualizing class hierarchy |
+| **Extraction Tool** | Custom Rust tool | Convert Logseq → OWL |
+| **Version Control** | Git + Markdown | Track changes over time |
 
 ## 🛠️ Extractor Tool Features
 
-- 📝 Parse Logseq markdown with embedded OWL
-- 🔗 Extract and combine OWL Functional Syntax blocks
-- 🏗️ Assemble complete ontology document
-- ✅ Validate syntax with horned-owl
-- 🔄 Optional: Convert Logseq properties to OWL axioms
-- 🎯 Wikilink → IRI conversion
+The `logseq-owl-extractor` Rust tool provides:
+
+- 📝 **Parse Logseq markdown** - Extracts properties and OWL blocks from outline format
+- 🔗 **Combine OWL blocks** - Assembles axioms from multiple concept files
+- 🏗️ **Build complete ontology** - Includes header from OntologyDefinition.md
+- ✅ **Validate syntax** - Uses horned-owl to check OWL 2 DL compliance
+- 🔄 **Convert wikilinks** - Transforms `[[Page Name]]` to `mv:PageName` IRIs
+- 🎯 **Property conversion** - Optional conversion of Logseq properties to OWL axioms
+- 📊 **Two format support** - Handles both code fence and direct indented OWL blocks
+- 🔍 **Error reporting** - Clear messages for syntax errors with line numbers
+
+**Example usage:**
+```bash
+logseq-owl-extractor --input . --output ontology.ofn --validate
+```
+
+See [logseq-owl-extractor/README.md](logseq-owl-extractor/README.md) for full documentation.
 
 ## 📊 Current Status
 
@@ -205,25 +327,71 @@ See [ValidationTests.md](ValidationTests.md) for details.
 | Extraction Tool | ✅ Complete |
 | Documentation | ✅ Complete |
 
-**All issues from [task.md](task.md) have been resolved!** 🎉
+**All issues from [docs/task.md](docs/task.md) have been resolved!** 🎉
 
-## 🚧 Future Enhancements
+See [docs/IMPLEMENTATION_STATUS.md](docs/IMPLEMENTATION_STATUS.md) for details.
 
+## 🚧 Roadmap
+
+### Phase 1: Core Foundation ✅ Complete
+- [x] Orthogonal classification system (Physicality × Role)
+- [x] All 9 intersection classes defined
+- [x] Complete property schema
+- [x] ETSI domain classification
+- [x] Rust extraction tool with horned-owl validation
+- [x] Format standardization (Logseq-native outline)
+- [x] Three exemplar concepts (Avatar, Digital Twin, Game Engine)
+
+### Phase 2: Batch Migration 🔄 In Progress
+- [x] 3 exemplar files migrated
+- [ ] First batch of 20 simple VirtualObject concepts
+- [ ] 40 infrastructure concepts
+- [ ] 30 virtual processes
+- [ ] Complete migration of 260+ VisioningLab concepts
+
+**Progress:** 3 / 260+ concepts (1.2%)
+
+See [docs/MIGRATION_STATUS.md](docs/MIGRATION_STATUS.md) for details.
+
+### Phase 3: Tooling & Integration 🔲 Planned
 - [ ] Integration with whelk-rs for automatic reasoning
-- [ ] SWRL rule support for complex inference
-- [ ] Export to RDF/XML, Turtle, Manchester Syntax
-- [ ] Web interface for browsing the ontology
 - [ ] GitHub Actions for continuous validation
 - [ ] Incremental extraction (only changed files)
+- [ ] SWRL rule support for complex inference
+
+### Phase 4: Export & Publishing 🔲 Future
+- [ ] Export to RDF/XML, Turtle, Manchester Syntax
+- [ ] Web interface for browsing the ontology
+- [ ] SPARQL endpoint for queries
+- [ ] Published to BioPortal or similar ontology repository
 
 ## 🤝 Contributing
 
 Contributions welcome! To add a new concept:
 
-1. Create a new `.md` file
-2. Follow the format in [Avatar.md](Avatar.md) or [DigitalTwin.md](DigitalTwin.md)
-3. Run the extractor to validate
-4. Submit a PR
+1. **Use the template**: Copy [docs/reference/TEMPLATE.md](docs/reference/TEMPLATE.md)
+2. **Follow exemplars**: Study [Avatar.md](Avatar.md), [DigitalTwin.md](DigitalTwin.md), or [VisioningLab/Game Engine.md](VisioningLab/Game%20Engine.md)
+3. **Classify correctly**: Use Physicality × Role dimensions (see [docs/guides/MIGRATION_GUIDE.md](docs/guides/MIGRATION_GUIDE.md))
+4. **Add metaverseOntology tag**: Include `metaverseOntology:: true` property
+5. **Validate**: Run the extractor to check OWL syntax
+6. **Submit PR**: Include description of concept and its classification
+
+### Adding New Concepts - Quick Checklist
+
+- [ ] Filename matches concept name (spaces OK)
+- [ ] ### OntologyBlock heading with `collapsed:: true`
+- [ ] `metaverseOntology:: true` is first property
+- [ ] Unique term-id assigned
+- [ ] Clear definition provided
+- [ ] owl:physicality dimension correct (Physical/Virtual/Hybrid)
+- [ ] owl:role dimension correct (Agent/Object/Process)
+- [ ] owl:inferred-class matches physicality + role
+- [ ] At least one ETSI domain assigned
+- [ ] OWL Axioms in code fence with ```clojure syntax
+- [ ] File extracts successfully with logseq-owl-extractor
+- [ ] Human-readable "About" section included
+
+See [docs/reference/TEMPLATE.md](docs/reference/TEMPLATE.md) for full validation checklist.
 
 ## 📖 Learn More
 
@@ -258,4 +426,4 @@ Metaverse Ontology Working Group
 
 ---
 
-**Ready to start?** See [QUICKSTART.md](QUICKSTART.md) for setup instructions!
+**Ready to start?** See [docs/guides/QUICKSTART.md](docs/guides/QUICKSTART.md) for setup instructions!

@@ -69,9 +69,15 @@ fn extract_properties(content: &str) -> HashMap<String, Vec<String>> {
 }
 
 /// Extract OWL Functional Syntax blocks
-/// Format: owl:functional-syntax:: |
-///           Declaration(...)
-///           SubClassOf(...)
+/// Supports two formats:
+/// 1. Code fence format (Logseq outline):
+///    ```
+///    owl:functional-syntax:: |
+///      Declaration(...)
+///    ```
+/// 2. Direct indented format:
+///    owl:functional-syntax:: |
+///      Declaration(...)
 fn extract_owl_blocks(content: &str) -> Result<Vec<String>> {
     let mut blocks = Vec::new();
     let lines: Vec<&str> = content.lines().collect();
@@ -80,7 +86,46 @@ fn extract_owl_blocks(content: &str) -> Result<Vec<String>> {
     while i < lines.len() {
         let line = lines[i].trim();
 
-        // Look for the OWL block marker
+        // Check for code fence containing owl:functional-syntax
+        if line.starts_with("```") {
+            i += 1;
+            if i >= lines.len() {
+                break;
+            }
+
+            // Check if the next line has owl:functional-syntax marker
+            if lines[i].trim().starts_with("owl:functional-syntax::") {
+                // Check for pipe character
+                if !lines[i].trim().ends_with('|') {
+                    i += 1;
+                    continue;
+                }
+
+                i += 1;
+
+                // Extract until closing ```
+                let mut block_lines = Vec::new();
+                while i < lines.len() {
+                    let current_line = lines[i];
+                    if current_line.trim().starts_with("```") {
+                        break;
+                    }
+                    // Preserve indentation inside code fence
+                    if !current_line.trim().is_empty() {
+                        block_lines.push(current_line.trim_start());
+                    }
+                    i += 1;
+                }
+
+                if !block_lines.is_empty() {
+                    blocks.push(block_lines.join("\n"));
+                }
+            }
+            i += 1;
+            continue;
+        }
+
+        // Original format: direct owl:functional-syntax:: |
         if line.starts_with("owl:functional-syntax::") {
             i += 1;
             if i >= lines.len() {
@@ -112,8 +157,9 @@ fn extract_owl_blocks(content: &str) -> Result<Vec<String>> {
                     break;
                 }
 
-                // Stop if we hit another property or heading
+                // Stop if we hit another property, heading, or code fence
                 if current_line.trim_start().starts_with('#')
+                    || current_line.trim().starts_with("```")
                     || (current_line.contains("::") && !current_line.trim().starts_with("//"))
                 {
                     break;
@@ -174,5 +220,47 @@ owl:functional-syntax:: |
         let blocks = extract_owl_blocks(content).unwrap();
         assert_eq!(blocks.len(), 1);
         assert!(blocks[0].contains("Declaration(Class(mv:Avatar))"));
+    }
+
+    #[test]
+    fn test_extract_owl_blocks_code_fence() {
+        let content = r#"
+	- ## OWL Axioms
+	  collapsed:: true
+		- ```
+		  owl:functional-syntax:: |
+		    Declaration(Class(mv:Avatar))
+
+		    # Classification
+		    SubClassOf(mv:Avatar mv:VirtualEntity)
+		    SubClassOf(mv:Avatar mv:Agent)
+		  ```
+"#;
+
+        let blocks = extract_owl_blocks(content).unwrap();
+        assert_eq!(blocks.len(), 1);
+        assert!(blocks[0].contains("Declaration(Class(mv:Avatar))"));
+        assert!(blocks[0].contains("SubClassOf(mv:Avatar mv:VirtualEntity)"));
+        assert!(blocks[0].contains("SubClassOf(mv:Avatar mv:Agent)"));
+    }
+
+    #[test]
+    fn test_extract_properties_from_outline() {
+        let content = r#"
+- OntologyBlock
+  collapsed:: true
+	- term-id:: 20067
+	- preferred-term:: Avatar
+	- owl:class:: mv:Avatar
+	- owl:physicality:: VirtualEntity
+	- owl:role:: Agent
+"#;
+
+        let props = extract_properties(content);
+        assert_eq!(props.get("term-id").unwrap()[0], "20067");
+        assert_eq!(props.get("preferred-term").unwrap()[0], "Avatar");
+        assert_eq!(props.get("owl:class").unwrap()[0], "mv:Avatar");
+        assert_eq!(props.get("owl:physicality").unwrap()[0], "VirtualEntity");
+        assert_eq!(props.get("owl:role").unwrap()[0], "Agent");
     }
 }

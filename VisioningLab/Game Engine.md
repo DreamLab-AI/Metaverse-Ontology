@@ -1,117 +1,112 @@
-# Game Engine
-
-## Core Properties
-
-term-id:: 20057
-preferred-term:: Game Engine
-definition:: Software framework providing core functionality for rendering, physics, and interaction in real-time 3D environments.
-maturity:: mature
-source:: [[Metaverse 101]], [[SIGGRAPH Pipeline WG]], [[OMA3 Media WG]]
-
-## OWL Classification
-
-owl:physicality-dimension:: VirtualEntity
-owl:role-dimension:: Object
-
-**Note:** A reasoner will automatically infer this is a subclass of `mv:VirtualObject`.
-
-## Ontological Relationships
-
-has-part:: [[Rendering Pipeline]], [[Physics Engine]], [[Scene Graph]], [[Audio Engine]]
-requires:: [[Graphics API]], [[Compute Infrastructure]]
-enables:: [[Real-Time Rendering]], [[Interactive Experience]], [[Procedural Content Generation]]
-belongsToDomain:: [[InfrastructureDomain]], [[CreativeMediaDomain]]
-implementedInLayer:: [[PlatformLayer]]
-
-## OWL Functional Syntax
-
-owl:functional-syntax:: |
-  Declaration(Class(mv:GameEngine))
-
-  # Assert classification along the two primary dimensions
-  SubClassOf(mv:GameEngine mv:VirtualEntity)
-  SubClassOf(mv:GameEngine mv:Object)
-  SubClassOf(mv:GameEngine mv:Software)
-
-  # A Game Engine must have at least one rendering capability
-  SubClassOf(mv:GameEngine
-    ObjectSomeValuesFrom(mv:hasPart mv:RenderingPipeline)
-  )
-
-  # A Game Engine must have a physics engine
-  SubClassOf(mv:GameEngine
-    ObjectSomeValuesFrom(mv:hasPart mv:PhysicsEngine)
-  )
-
-  # Link to classification schemas
-  SubClassOf(mv:GameEngine
-    ObjectSomeValuesFrom(mv:belongsToDomain mv:InfrastructureDomain)
-  )
-  SubClassOf(mv:GameEngine
-    ObjectSomeValuesFrom(mv:belongsToDomain mv:CreativeMediaDomain)
-  )
-  SubClassOf(mv:GameEngine
-    ObjectSomeValuesFrom(mv:implementedInLayer mv:PlatformLayer)
-  )
-
-## Logseq Outline View
-collapsed:: true
-- ### Core Properties
+- OntologyBlock
+  collapsed:: true
+	- metaverseOntology:: true
 	- term-id:: 20057
 	- preferred-term:: Game Engine
 	- definition:: Software framework providing core functionality for rendering, physics, and interaction in real-time 3D environments.
 	- maturity:: mature
-	- source:: [[Metaverse 101]], [[SIGGRAPH Pipeline WG]]
-- ### OWL Classification
-	- owl:physicality-dimension:: VirtualEntity
-	- owl:role-dimension:: Object
-	- **Inferred:** `mv:VirtualObject` (via reasoner)
-	- **Also subclass of:** `mv:Software`
-- ### Ontological Relationships
-	- has-part:: [[Rendering Pipeline]], [[Physics Engine]], [[Scene Graph]], [[Audio Engine]]
-	- requires:: [[Graphics API]], [[Compute Infrastructure]]
-	- enables:: [[Real-Time Rendering]], [[Interactive Experience]]
+	- source:: [[Metaverse 101]], [[SIGGRAPH Pipeline WG]], [[OMA3 Media WG]]
+	- owl:class:: mv:GameEngine
+	- owl:physicality:: VirtualEntity
+	- owl:role:: Object
+	- owl:inferred-class:: mv:VirtualObject
 	- belongsToDomain:: [[InfrastructureDomain]], [[CreativeMediaDomain]]
 	- implementedInLayer:: [[PlatformLayer]]
-- ### Formal OWL Axioms
-	- `Declaration(Class(mv:GameEngine))`
-	- **Classification Axioms**
-		- `SubClassOf(mv:GameEngine mv:VirtualEntity)`
-		- `SubClassOf(mv:GameEngine mv:Object)`
-		- `SubClassOf(mv:GameEngine mv:Software)`
-	- **Structural Constraints**
-		- Must have rendering capability
-		- `SubClassOf(mv:GameEngine ObjectSomeValuesFrom(mv:hasPart mv:RenderingPipeline))`
-		- Must have physics engine
-		- `SubClassOf(mv:GameEngine ObjectSomeValuesFrom(mv:hasPart mv:PhysicsEngine))`
-	- **Domain Classification**
-		- `SubClassOf(mv:GameEngine ObjectSomeValuesFrom(mv:belongsToDomain mv:InfrastructureDomain))`
-		- `SubClassOf(mv:GameEngine ObjectSomeValuesFrom(mv:belongsToDomain mv:CreativeMediaDomain))`
+	- ## Relationships
+		- has-part:: [[Rendering Pipeline]], [[Physics Engine]], [[Scene Graph]], [[Audio Engine]]
+		- requires:: [[Graphics API]], [[Compute Infrastructure]]
+		- enables:: [[Real-Time Rendering]], [[Interactive Experience]], [[Procedural Content Generation]]
+	- ## OWL Axioms
+	  collapsed:: true
+		- ```
+		  owl:functional-syntax:: |
+		    Declaration(Class(mv:GameEngine))
 
-## Usage Notes
+		    # Classification
+		    SubClassOf(mv:GameEngine mv:VirtualEntity)
+		    SubClassOf(mv:GameEngine mv:Object)
+		    SubClassOf(mv:GameEngine mv:Software)
 
-Game Engines are foundational software platforms that provide the runtime infrastructure for virtual worlds and interactive experiences. They integrate multiple subsystems (rendering, physics, audio, scripting) into a cohesive framework.
+		    # A Game Engine must have rendering capability
+		    SubClassOf(mv:GameEngine
+		      ObjectSomeValuesFrom(mv:hasPart mv:RenderingPipeline)
+		    )
 
-**Common Examples:** Unity, Unreal Engine, Godot, CryEngine
+		    # A Game Engine must have physics engine
+		    SubClassOf(mv:GameEngine
+		      ObjectSomeValuesFrom(mv:hasPart mv:PhysicsEngine)
+		    )
 
-## Related Concepts
-
-- [[Rendering Pipeline]] - Visual output subsystem
-- [[Physics Engine]] - Physical simulation subsystem
-- [[Scene Graph]] - Spatial data structure
-- [[Real-Time Rendering]] - Output process
-- [[Virtual World]] - Environment created by engine
-- [[Authoring Tool]] - Content creation for engine
-
-## Sources & References
-
-- Metaverse 101 Glossary
-- SIGGRAPH Pipeline Working Group
-- OMA3 Media Working Group
-- Industry standards (Khronos, Unity, Unreal)
+		    # Domain classification
+		    SubClassOf(mv:GameEngine
+		      ObjectSomeValuesFrom(mv:belongsToDomain mv:InfrastructureDomain)
+		    )
+		    SubClassOf(mv:GameEngine
+		      ObjectSomeValuesFrom(mv:belongsToDomain mv:CreativeMediaDomain)
+		    )
+		    SubClassOf(mv:GameEngine
+		      ObjectSomeValuesFrom(mv:implementedInLayer mv:PlatformLayer)
+		    )
+		  ```
+- ## About Game Engines
+	- Game Engines are **foundational software platforms** that provide the runtime infrastructure for creating and running interactive virtual experiences.
+	- ### Key Characteristics
+		- Real-time 3D rendering at interactive frame rates
+		- Physics simulation for realistic object behavior
+		- Scene management and spatial organization
+		- Cross-platform deployment capabilities
+		- Integrated toolchain for content creation
+	- ### Technical Components
+		- [[Rendering Pipeline]] - Visual output and graphics processing
+		- [[Physics Engine]] - Physical simulation and collision detection
+		- [[Scene Graph]] - Hierarchical spatial data structure
+		- [[Audio Engine]] - 3D spatial audio and sound management
+		- [[Graphics API]] - Low-level graphics abstraction (Vulkan, DirectX, Metal)
+		- Input handling system - User interaction processing
+		- Scripting runtime - Game logic execution
+	- ### Functional Capabilities
+		- **Real-Time Rendering**: Generate interactive 3D graphics at 30-120+ FPS
+		- **Physics Simulation**: Accurate collision detection and dynamics
+		- **Asset Management**: Load and manage 3D models, textures, animations
+		- **Scripting**: Enable gameplay logic without recompilation
+		- **Networking**: Multiplayer and online features
+		- **Platform Abstraction**: Deploy to multiple devices from single codebase
+	- ### Use Cases
+		- **Gaming**: PC, console, and mobile game development
+		- **Virtual Worlds**: Social VR platforms and metaverse environments
+		- **Simulation**: Training simulators, architectural visualization
+		- **Interactive Media**: Museums, exhibitions, interactive installations
+		- **Virtual Production**: Real-time film and broadcast production
+		- **Digital Twins**: Real-time 3D visualization of physical systems
+	- ### Popular Examples
+		- **Unity** - Widely-used cross-platform engine
+		- **Unreal Engine** - High-fidelity AAA game engine
+		- **Godot** - Open-source game engine
+		- **CryEngine** - Known for advanced graphics
+		- **Amazon Lumberyard** - Cloud-integrated engine
+		- **Bevy** - Modern Rust-based engine
+	- ### Standards & References
+		- [[SIGGRAPH Pipeline WG]] - Graphics pipeline standards
+		- [[OMA3 Media WG]] - Metaverse media working group
+		- Khronos Group - OpenGL, Vulkan, glTF standards
+		- [[Metaverse 101]] - Industry terminology
+	- ### Related Concepts
+		- [[VirtualObject]] - Inferred parent class
+		- [[Software]] - Direct parent class
+		- [[Rendering Pipeline]] - Core component
+		- [[Physics Engine]] - Core component
+		- [[Virtual World]] - What engines create
+		- [[Authoring Tool]] - Content creation for engines
+		- [[Real-Time Rendering]] - Key capability
+		- [[Interactive Experience]] - What engines enable
+	- ### Implementation Notes
+		- Modern engines use Entity-Component-System (ECS) architectures
+		- Support for physically-based rendering (PBR) is now standard
+		- Ray tracing capabilities increasingly common
+		- Integration with AI/ML frameworks growing
+		- Cloud rendering and streaming capabilities emerging
 
 ## Metadata
-
 imported-from:: [[Metaverse Glossary Excel]]
 import-date:: [[2025-01-15]]
 ontology-status:: migrated

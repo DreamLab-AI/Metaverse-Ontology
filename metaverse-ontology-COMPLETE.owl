@@ -4460,8 +4460,6 @@ Ontology(<https://metaverse-ontology.org/>
   ObjectSomeValuesFrom(mv:calculatesThreatScore mv:RiskAssessmentMatrix)
   )
   SubClassOf(mv:ThreatSurfaceMap
-  )
-  SubClassOf(mv:ThreatSurfaceMap
   ObjectSomeValuesFrom(mv:alignsWithFramework mv:SecurityFramework)
   )
   SubClassOf(mv:ThreatSurfaceMap

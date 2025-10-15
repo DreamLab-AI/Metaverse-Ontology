@@ -1,0 +1,877 @@
+[
+  {
+    "@id": "https://metaverse-ontology.org/MiddlewareLayer",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Integration and orchestration services between application and infrastructure layers"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Middleware Layer"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/DisasterRecoveryReadiness",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Preparedness level for responding to catastrophic failures and restoring operations"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Disaster Recovery Readiness"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/FaultToleranceIndicator",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Measure of system ability to continue operating despite component failures"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Fault Tolerance Indicator"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/MetadataMapping",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Translation of descriptive information and attributes between different metadata schemas"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Metadata Mapping"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/ReplicationStrategy",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Method for duplicating and synchronizing data across multiple locations"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Replication Strategy"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/BackwardCompatibility",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Support for legacy formats, protocols, and versions ensuring continuity"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Backward Compatibility"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/SLAComplianceIndicator",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Measurement of adherence to service level agreements and contractual obligations"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "SLA Compliance Indicator"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/RecoveryTimeMeasurement",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Metrics quantifying duration required to restore service after failures (RTO)"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Recovery Time Measurement"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/FormatConversion",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Translation between different data formats, encodings, and representations"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Format Conversion"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/CrossPlatformMigration",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Technical capability enabling movement of assets, identities, and states between different platforms"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Cross-Platform Migration"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/ResilienceMetric",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Quantitative and qualitative measurement of system robustness, fault tolerance, recovery capabilities, and service continuity under adverse conditions"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Resilience Metric"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "https://metaverse-ontology.org/AdaptabilityMeasure"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/AvailabilityMeasurement"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/DisasterRecoveryReadiness"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/FaultToleranceIndicator"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/GracefulDegradation"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/ISO25010Aligned"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/InfrastructureDomain"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/MiddlewareLayer"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/PerformanceUnderStress"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/RecoveryTimeMeasurement"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/RedundancyLevel"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/ReliabilityScore"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/RobustnessIndicator"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/SLAComplianceIndicator"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/VirtualObject"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/AdaptabilityMeasure",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Capacity to adjust behavior and configuration in response to changing conditions"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Adaptability Measure"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/ISO25010Aligned",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Conformance to ISO/IEC 25010 software quality model standards"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "ISO 25010 Aligned"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/VirtualProcess",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Digital-only process, transformation, or workflow operating in virtual environments"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Virtual Process"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/FidelityMaintenance",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Preservation of quality, accuracy, and visual/functional equivalence during transformation"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Fidelity Maintenance"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/Portability",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Cross-platform migration process enabling seamless asset and identity transfer between heterogeneous virtual platforms and ecosystems"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Portability"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "https://metaverse-ontology.org/AssetTransformation"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/BackwardCompatibility"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/CrossPlatformMigration"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/FidelityMaintenance"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/FormatConversion"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/IdentityFederation"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/InfrastructureDomain"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/InteroperabilityBridge"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/MetadataMapping"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/MiddlewareLayer"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/SemanticPreservation"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/StandardsCompliance"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/ValidationProtocol"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/VirtualProcess"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/RecoveryMechanism",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "System for detecting failures and restoring service to operational state"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Recovery Mechanism"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/ContinuityMechanism",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "System ensuring uninterrupted service delivery and data availability"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Continuity Mechanism"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/Persistence",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "State management process ensuring data continuity, ownership records, and contextual information across sessions, platforms, and time periods"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Persistence"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "https://metaverse-ontology.org/ConsistencyProtocol"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/ContinuityMechanism"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/DataRetentionCapability"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/DistributedStateManagement"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/DurabilityGuarantee"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/EventualConsistency"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/InfrastructureDomain"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/MiddlewareLayer"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/RecoveryMechanism"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/ReplicationStrategy"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/SessionManagement"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/StatefulProcess"
+      },
+      {
+        "@id": "https://metaverse-ontology.org/VirtualProcess"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/DistributedStateManagement",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Coordination of state information across multiple nodes and geographic locations"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Distributed State Management"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/IdentityFederation",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Cross-platform user identity management enabling single sign-on and credential sharing"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Identity Federation"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/StatefulProcess",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Process that maintains and manages internal state information across operations"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Stateful Process"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/AvailabilityMeasurement",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Quantification of service uptime, accessibility, and operational status"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Availability Measurement"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/StandardsCompliance",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Adherence to industry standards, specifications, and best practices"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Standards Compliance"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/DurabilityGuarantee",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Contractual or technical promise of data permanence and integrity"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Durability Guarantee"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/EventualConsistency",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Convergence model where systems reach consistent state over time without strong synchronization"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Eventual Consistency"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/InteroperabilityBridge",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Connection and translation mechanism between heterogeneous systems and protocols"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Interoperability Bridge"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Ontology"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Formal ontology for metaverse concepts, infrastructure, and interoperability"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Metaverse Ontology"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#versionIRI": [
+      {
+        "@id": "https://metaverse-ontology.org/1.0"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/GracefulDegradation",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Controlled reduction of functionality while maintaining core services under strain"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Graceful Degradation"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/DataRetentionCapability",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Ability to preserve and store data over extended time periods"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Data Retention Capability"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/RedundancyLevel",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Degree of backup systems, components, and data copies available"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Redundancy Level"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/SessionManagement",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Handling of user interaction contexts, authentication states, and temporal boundaries"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Session Management"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/ConsistencyProtocol",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Mechanism ensuring data coherence and correctness across distributed systems"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Consistency Protocol"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/SemanticPreservation",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Maintaining meaning, intent, and semantic relationships during transformation and migration"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Semantic Preservation"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/AssetTransformation",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Process of converting, adapting, and optimizing digital assets for different platforms and use cases"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Asset Transformation"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/ValidationProtocol",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Verification and quality assurance mechanism ensuring correctness and compliance"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Validation Protocol"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/RobustnessIndicator",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Measure of system strength and stability under adverse conditions"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Robustness Indicator"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/PerformanceUnderStress",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Behavior metrics during high-load, resource-constrained, or degraded conditions"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Performance Under Stress"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/InfrastructureDomain",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Core system components, foundational services, and technical infrastructure for metaverse platforms"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Infrastructure Domain"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/VirtualObject",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Digital-only entity, artifact, or data structure existing in virtual space"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Virtual Object"
+      }
+    ]
+  },
+  {
+    "@id": "https://metaverse-ontology.org/ReliabilityScore",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Composite rating of overall system dependability and trustworthiness"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Reliability Score"
+      }
+    ]
+  }
+]

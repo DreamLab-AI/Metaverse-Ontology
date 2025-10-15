@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metaverse Ontology - WebVOWL Visualization</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .header {
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .subtitle {
+            font-size: 1.1em;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .option-card {
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+        .option-card h3 {
+            margin-top: 0;
+            color: #667eea;
+        }
+        .button {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .button:hover {
+            background: #764ba2;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .stat {
+            text-align: center;
+            padding: 15px;
+        }
+        .stat-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .file-list {
+            margin-top: 15px;
+        }
+        .file-item {
+            background: #f9f9f9;
+            padding: 10px;
+            margin: 5px 0;
+            border-left: 4px solid #667eea;
+            border-radius: 4px;
+        }
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🌐 Metaverse Ontology Visualization</h1>
+        <p class="subtitle">WebVOWL Interactive Graph Viewer</p>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>📊 Ontology Statistics</h2>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value">40</div>
+                    <div class="stat-label">Classes</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Core Concepts</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">Annotated</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">OWL 2</div>
+                    <div class="stat-label">DL Profile</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🎯 Visualization Options</h2>
+            <div class="options">
+                <div class="option-card">
+                    <h3>Option 1: WebVOWL Online</h3>
+                    <p>Use the official WebVOWL web interface (recommended for quick viewing)</p>
+                    <ol>
+                        <li>Open <a href="http://www.visualdataweb.de/webvowl/" target="_blank">WebVOWL</a></li>
+                        <li>Click "Ontology" menu → "Select ontology file"</li>
+                        <li>Upload <code>metaverse-ontology-webvowl.owl</code></li>
+                    </ol>
+                    <a href="http://www.visualdataweb.de/webvowl/" target="_blank" class="button">Open WebVOWL →</a>
+                </div>
+
+                <div class="option-card">
+                    <h3>Option 2: Protégé Desktop</h3>
+                    <p>Use Protégé ontology editor with OntoGraf plugin for advanced visualization</p>
+                    <ol>
+                        <li>Install <a href="https://protege.stanford.edu/" target="_blank">Protégé</a></li>
+                        <li>Install OntoGraf plugin</li>
+                        <li>Open <code>metaverse-ontology-webvowl.owl</code></li>
+                        <li>View in OntoGraf tab</li>
+                    </ol>
+                    <a href="https://protege.stanford.edu/" target="_blank" class="button">Download Protégé →</a>
+                </div>
+
+                <div class="option-card">
+                    <h3>Option 3: Local WebVOWL</h3>
+                    <p>Run WebVOWL locally for offline visualization and customization</p>
+                    <ol>
+                        <li>Clone <a href="https://github.com/VisualDataWeb/WebVOWL" target="_blank">WebVOWL repo</a></li>
+                        <li>Copy <code>metaverse-ontology-webvowl.owl</code> to <code>deploy/data/</code></li>
+                        <li>Add entry to <code>deploy/data/ontologies.json</code></li>
+                        <li>Run <code>npm install && npm start</code></li>
+                    </ol>
+                    <a href="https://github.com/VisualDataWeb/WebVOWL" target="_blank" class="button">WebVOWL Repo →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📁 Generated Files</h2>
+            <div class="file-list">
+                <div class="file-item">
+                    <strong>metaverse-ontology-webvowl.owl</strong> - Enhanced OWL/XML with labels and comments (recommended for WebVOWL)
+                </div>
+                <div class="file-item">
+                    <strong>metaverse-ontology.owl</strong> - Standard OWL/XML conversion
+                </div>
+                <div class="file-item">
+                    <strong>metaverse-ontology.ttl</strong> - Turtle format (alternative)
+                </div>
+                <div class="file-item">
+                    <strong>metaverse-ontology-FINAL.owl</strong> - Original OWL Functional Syntax (parent directory)
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🚀 Quick Start with WebVOWL Online</h2>
+            <div class="warning">
+                <strong>⚡ Fastest Method:</strong> No installation required!
+            </div>
+            <ol style="font-size: 1.1em; line-height: 1.8;">
+                <li>Go to <a href="http://www.visualdataweb.de/webvowl/" target="_blank" style="color: #667eea; font-weight: bold;">WebVOWL Online</a></li>
+                <li>Click the <strong>"Ontology"</strong> menu at the top</li>
+                <li>Select <strong>"Select ontology file..."</strong></li>
+                <li>Choose <code>visualization/metaverse-ontology-webvowl.owl</code> from this directory</li>
+                <li>Explore the interactive graph! Use mouse wheel to zoom, drag to pan</li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <h2>🎨 Visualization Features</h2>
+            <ul style="font-size: 1.05em; line-height: 1.8;">
+                <li><strong>Interactive Graph:</strong> Drag nodes, zoom in/out, pan around</li>
+                <li><strong>Class Hierarchy:</strong> Visualize SubClassOf relationships</li>
+                <li><strong>Labels & Descriptions:</strong> Hover over nodes for detailed information</li>
+                <li><strong>Filtering:</strong> Show/hide specific classes or relationships</li>
+                <li><strong>Export:</strong> Save visualization as SVG or JSON</li>
+                <li><strong>Statistics:</strong> View metrics about the ontology structure</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>📖 Core Concepts</h2>
+            <h3 style="color: #667eea;">Portability</h3>
+            <p>Cross-platform migration process enabling seamless asset and identity transfer between heterogeneous virtual platforms and ecosystems</p>
+
+            <h3 style="color: #667eea;">Persistence</h3>
+            <p>State management process ensuring data continuity, ownership records, and contextual information across sessions, platforms, and time periods</p>
+
+            <h3 style="color: #667eea;">Resilience Metric</h3>
+            <p>Quantitative and qualitative measurement of system robustness, fault tolerance, recovery capabilities, and service continuity under adverse conditions</p>
+        </div>
+
+        <div class="card">
+            <h2>🔗 Resources</h2>
+            <ul style="font-size: 1.05em;">
+                <li><a href="http://www.visualdataweb.de/webvowl/" target="_blank">WebVOWL Official Site</a></li>
+                <li><a href="https://protege.stanford.edu/" target="_blank">Protégé Ontology Editor</a></li>
+                <li><a href="https://www.w3.org/OWL/" target="_blank">OWL 2 Web Ontology Language</a></li>
+                <li><a href="https://github.com/VisualDataWeb/WebVOWL/wiki" target="_blank">WebVOWL Documentation</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

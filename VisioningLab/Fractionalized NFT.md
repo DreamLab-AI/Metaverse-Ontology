@@ -68,7 +68,7 @@
 
 		  # Fractionalized NFT has total supply of shares
 		  SubClassOf(mv:FractionalizedNFT
-		    ObjectExactCardinality(1 mv:hasTotalSupply xsd:integer)
+		    DataExactCardinality(1 mv:hasTotalSupply)
 		  )
 
 		  # Relationship to underlying NFT

@@ -45,7 +45,9 @@
 		  )
 
 		  SubClassOf(mv:VirtualProductionVolume
-		    ObjectSomeValuesFrom(mv:merges mv:LiveActionFootage mv:VirtualEnvironment)
+		    ObjectSomeValuesFrom(mv:merges
+		      ObjectIntersectionOf(mv:LiveActionFootage mv:VirtualEnvironment)
+		    )
 		  )
 
 		  # Domain classification

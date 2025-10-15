@@ -73,7 +73,7 @@
 
 		  # Pool maintains constant product invariant (for xy=k AMM)
 		  SubClassOf(mv:ConstantProductPool
-		    ObjectExactCardinality(1 mv:hasInvariantFormula xsd:string)
+		    DataExactCardinality(1 mv:hasInvariantFormula)
 		  )
 
 		  # AMM algorithm types are disjoint

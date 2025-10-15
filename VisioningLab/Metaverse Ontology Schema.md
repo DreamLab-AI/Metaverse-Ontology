@@ -64,7 +64,7 @@
 
 		  # Meta-property: ontology schema must be internally consistent
 		  SubClassOf(mv:MetaverseOntologySchema
-		    DataSomeValuesFrom(mv:isConsistent xsd:boolean[true])
+		    DataHasValue(mv:isConsistent "true"^^xsd:boolean)
 		  )
 
 		  # Must use OWL 2 DL profile for decidability

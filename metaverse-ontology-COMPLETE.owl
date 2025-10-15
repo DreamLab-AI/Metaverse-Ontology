@@ -1199,10 +1199,10 @@ Ontology(<https://metaverse-ontology.org/>
   ObjectSomeValuesFrom(mv:implementedInLayer mv:MiddlewareLayer)
   )
   SubClassOf(mv:NonFungibleToken
-  ObjectExactCardinality(1 mv:hasUniqueIdentifier xsd:string)
+  DataExactCardinality(1 mv:hasUniqueIdentifier)
   )
   SubClassOf(mv:NonFungibleToken
-  ObjectHasValue(mv:isFungible "false"^^xsd:boolean)
+  DataHasValue(mv:isFungible "false"^^xsd:boolean)
   )
   SubClassOf(mv:NonFungibleToken
   ObjectSomeValuesFrom(mv:enables mv:DigitalOwnership)
@@ -1512,7 +1512,7 @@ Ontology(<https://metaverse-ontology.org/>
   ObjectSomeValuesFrom(mv:implementedInLayer mv:MiddlewareLayer)
   )
   SubClassOf(mv:FractionalizedNFT
-  ObjectExactCardinality(1 mv:hasTotalSupply xsd:integer)
+  DataExactCardinality(1 mv:hasTotalSupply)
   )
   SubClassOf(mv:FractionalizedNFT
   ObjectExactCardinality(1 mv:representsAsset mv:NFT)
@@ -2431,7 +2431,9 @@ Ontology(<https://metaverse-ontology.org/>
   ObjectSomeValuesFrom(mv:renders mv:RealTimeBackground)
   )
   SubClassOf(mv:VirtualProductionVolume
-  ObjectSomeValuesFrom(mv:merges mv:LiveActionFootage mv:VirtualEnvironment)
+  ObjectSomeValuesFrom(mv:merges
+  ObjectIntersectionOf(mv:LiveActionFootage mv:VirtualEnvironment)
+  )
   )
   SubClassOf(mv:VirtualProductionVolume
   ObjectSomeValuesFrom(mv:belongsToDomain mv:CreativeMediaDomain)
@@ -2514,7 +2516,7 @@ Ontology(<https://metaverse-ontology.org/>
   ObjectSomeValuesFrom(mv:implementedInLayer mv:MiddlewareLayer)
   )
   SubClassOf(mv:Cryptocurrency
-  ObjectExactCardinality(1 mv:hasCurrencySymbol xsd:string)
+  DataExactCardinality(1 mv:hasCurrencySymbol)
   )
   DisjointClasses(mv:NativeCryptocurrency mv:TokenBasedCryptocurrency)
 
@@ -2568,7 +2570,7 @@ Ontology(<https://metaverse-ontology.org/>
   ObjectSomeValuesFrom(mv:requires mv:PriceOracle)
   )
   SubClassOf(mv:Stablecoin
-  ObjectHasValue(mv:isFungible "true"^^xsd:boolean)
+  DataHasValue(mv:isFungible "true"^^xsd:boolean)
   )
   SubClassOf(
   ObjectIntersectionOf(mv:Stablecoin mv:CollateralizedStablecoin)
@@ -2826,7 +2828,7 @@ Ontology(<https://metaverse-ontology.org/>
   ObjectSomeValuesFrom(mv:implementedInLayer mv:MiddlewareLayer)
   )
   SubClassOf(mv:ConstantProductPool
-  ObjectExactCardinality(1 mv:hasInvariantFormula xsd:string)
+  DataExactCardinality(1 mv:hasInvariantFormula)
   )
   DisjointClasses(mv:ConstantProductAMM mv:ConstantSumAMM mv:StableSwapAMM)
 
@@ -2853,7 +2855,7 @@ Ontology(<https://metaverse-ontology.org/>
   )
   DisjointClasses(mv:UtilityToken mv:GovernanceToken mv:SecurityToken)
   SubClassOf(mv:CryptoToken
-  ObjectExactCardinality(1 mv:hasTokenIdentifier xsd:string)
+  DataExactCardinality(1 mv:hasTokenIdentifier)
   )
 
   Declaration(Class(mv:ProceduralAudioGenerator))
@@ -3623,12 +3625,7 @@ Ontology(<https://metaverse-ontology.org/>
   ObjectMinCardinality(4 mv:hasLayer mv:ArchitectureLayer)
   )
   SubClassOf(mv:MetaverseArchitectureStack
-  ObjectAllValuesFrom(mv:hasLayer
-  ObjectIntersectionOf(
-  mv:ArchitectureLayer
-  ObjectSomeValuesFrom(mv:hasLayerOrder xsd:positiveInteger)
-  )
-  )
+  ObjectMinCardinality(4 mv:hasLayer mv:ArchitectureLayer)
   )
   SubClassOf(mv:MetaverseArchitectureStack
   ObjectSomeValuesFrom(mv:definesInterface mv:InterfaceSpecification)
@@ -3648,14 +3645,7 @@ Ontology(<https://metaverse-ontology.org/>
   )
   SubClassOf(mv:MetaverseArchitectureStack
   ObjectAllValuesFrom(mv:hasLayer
-  ObjectAllValuesFrom(mv:dependsOnLayer
-  ObjectIntersectionOf(
-  mv:ArchitectureLayer
-  ObjectSomeValuesFrom(mv:hasLayerOrder
-  DataHasValue(lessThan(mv:thisLayerOrder))
-  )
-  )
-  )
+  ObjectAllValuesFrom(mv:dependsOnLayer mv:ArchitectureLayer)
   )
   )
   SubClassOf(mv:MetaverseArchitectureStack
@@ -4470,7 +4460,6 @@ Ontology(<https://metaverse-ontology.org/>
   ObjectSomeValuesFrom(mv:calculatesThreatScore mv:RiskAssessmentMatrix)
   )
   SubClassOf(mv:ThreatSurfaceMap
-  DataSomeValuesFrom(mv:hasOverallRiskScore xsd:decimal)
   )
   SubClassOf(mv:ThreatSurfaceMap
   ObjectSomeValuesFrom(mv:alignsWithFramework mv:SecurityFramework)
@@ -5007,10 +4996,10 @@ Ontology(<https://metaverse-ontology.org/>
   ObjectSomeValuesFrom(mv:requires mv:DatabaseSystem)
   )
   SubClassOf(mv:VirtualWorld
-  ObjectMinCardinality(1 mv:hasPersistence xsd:boolean)
+  DataMinCardinality(1 mv:hasPersistence)
   )
   SubClassOf(mv:VirtualWorld
-  ObjectMinCardinality(1 mv:hasSpatialContinuity xsd:boolean)
+  DataMinCardinality(1 mv:hasSpatialContinuity)
   )
   SubClassOf(mv:VirtualWorld
   ObjectSomeValuesFrom(mv:belongsToDomain mv:InfrastructureDomain)
@@ -6000,7 +5989,7 @@ Ontology(<https://metaverse-ontology.org/>
   ObjectSomeValuesFrom(mv:enables mv:SemanticSearch)
   )
   SubClassOf(mv:GlossaryIndex
-  DataSomeValuesFrom(mv:synchronizedWithOntology xsd:boolean[true])
+  DataHasValue(mv:synchronizedWithOntology "true"^^xsd:boolean)
   )
   SubClassOf(mv:GlossaryIndex
   ObjectSomeValuesFrom(mv:hasLanguageSupport mv:MultiLanguageCapability)
@@ -6105,7 +6094,7 @@ Ontology(<https://metaverse-ontology.org/>
   ObjectSomeValuesFrom(mv:enables mv:AutomatedReasoning)
   )
   SubClassOf(mv:MetaverseOntologySchema
-  DataSomeValuesFrom(mv:isConsistent xsd:boolean[true])
+  DataHasValue(mv:isConsistent "true"^^xsd:boolean)
   )
   SubClassOf(mv:MetaverseOntologySchema
   ObjectSomeValuesFrom(mv:conformsToProfile mv:OWL2DLProfile)
@@ -6719,7 +6708,7 @@ Ontology(<https://metaverse-ontology.org/>
   ObjectSomeValuesFrom(mv:requires mv:SmartContract)
   )
   SubClassOf(mv:LoyaltyToken
-  ObjectHasValue(mv:isFungible "true"^^xsd:boolean)
+  DataHasValue(mv:isFungible "true"^^xsd:boolean)
   )
 
   Declaration(Class(mv:BiosensingInterface))
@@ -6797,13 +6786,10 @@ Ontology(<https://metaverse-ontology.org/>
   ObjectSomeValuesFrom(mv:assessesExplainability mv:AIModel)
   )
   SubClassOf(mv:AlgorithmicTransparencyIndex
-  DataSomeValuesFrom(mv:hasTransparencyScore xsd:decimal)
   )
   SubClassOf(mv:AlgorithmicTransparencyIndex
-  DataSomeValuesFrom(mv:hasComplianceLevel xsd:string)
   )
   SubClassOf(mv:AlgorithmicTransparencyIndex
-  DataSomeValuesFrom(mv:hasAssessmentDate xsd:dateTime)
   )
   SubClassOf(mv:AlgorithmicTransparencyIndex
   ObjectSomeValuesFrom(mv:supportsAudit mv:AlgorithmicAuditing)
@@ -7873,7 +7859,6 @@ Ontology(<https://metaverse-ontology.org/>
   ObjectSomeValuesFrom(mv:dependsOn mv:NetworkInfrastructure)
   )
   SubClassOf(mv:Latency
-  ObjectSomeValuesFrom(mv:hasValue xsd:decimal)
   )
   SubClassOf(mv:Latency
   ObjectSomeValuesFrom(mv:hasUnit mv:Millisecond)
@@ -8137,16 +8122,16 @@ Ontology(<https://metaverse-ontology.org/>
   SubClassOf(mv:TrustScoreMetric mv:VirtualEntity)
   SubClassOf(mv:TrustScoreMetric mv:Object)
   SubClassOf(mv:TrustScoreMetric
-  ObjectExactCardinality(1 mv:hasScoreValue xsd:decimal)
+  DataExactCardinality(1 mv:hasScoreValue)
   )
   SubClassOf(mv:TrustScoreMetric
-  ObjectExactCardinality(1 mv:hasTimestamp xsd:dateTime)
+  DataExactCardinality(1 mv:hasTimestamp)
   )
   SubClassOf(mv:TrustScoreMetric
   ObjectMinCardinality(1 mv:hasConfidenceInterval mv:StatisticalRange)
   )
   SubClassOf(mv:TrustScoreMetric
-  ObjectMaxCardinality(1 mv:hasValidityPeriod xsd:duration)
+  DataMaxCardinality(1 mv:hasValidityPeriod)
   )
   SubClassOf(mv:TrustScoreMetric
   ObjectSomeValuesFrom(mv:computedBy mv:ReputationScoringModel)

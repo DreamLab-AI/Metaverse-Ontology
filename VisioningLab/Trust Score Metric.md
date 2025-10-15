@@ -33,10 +33,10 @@
 
 		  # Required components with cardinality
 		  SubClassOf(mv:TrustScoreMetric
-		    ObjectExactCardinality(1 mv:hasScoreValue xsd:decimal)
+		    DataExactCardinality(1 mv:hasScoreValue)
 		  )
 		  SubClassOf(mv:TrustScoreMetric
-		    ObjectExactCardinality(1 mv:hasTimestamp xsd:dateTime)
+		    DataExactCardinality(1 mv:hasTimestamp)
 		  )
 		  SubClassOf(mv:TrustScoreMetric
 		    ObjectMinCardinality(1 mv:hasConfidenceInterval mv:StatisticalRange)
@@ -44,7 +44,7 @@
 
 		  # Optional validity period
 		  SubClassOf(mv:TrustScoreMetric
-		    ObjectMaxCardinality(1 mv:hasValidityPeriod xsd:duration)
+		    DataMaxCardinality(1 mv:hasValidityPeriod)
 		  )
 
 		  # Calculation methodology reference

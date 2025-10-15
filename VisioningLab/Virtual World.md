@@ -58,10 +58,10 @@
 
 		  # Defining characteristics (cardinality constraints)
 		  SubClassOf(mv:VirtualWorld
-		    ObjectMinCardinality(1 mv:hasPersistence xsd:boolean)
+		    DataMinCardinality(1 mv:hasPersistence)
 		  )
 		  SubClassOf(mv:VirtualWorld
-		    ObjectMinCardinality(1 mv:hasSpatialContinuity xsd:boolean)
+		    DataMinCardinality(1 mv:hasSpatialContinuity)
 		  )
 
 		  # Domain classification

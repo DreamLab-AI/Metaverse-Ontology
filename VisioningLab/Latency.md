@@ -57,7 +57,7 @@
 
 		  # Has measurable value in milliseconds
 		  SubClassOf(mv:Latency
-		    ObjectSomeValuesFrom(mv:hasValue xsd:decimal)
+		    
 		  )
 
 		  # Has time unit (milliseconds)

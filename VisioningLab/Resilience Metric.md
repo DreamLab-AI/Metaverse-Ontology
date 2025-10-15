@@ -15,29 +15,29 @@ Unlike simple uptime percentages, Resilience Metrics provide multi-dimensional a
 ;; OWL Functional Syntax - Resilience Metric Axioms
 
 ;; Core Classification
-SubClassOf(metaverse:ResilienceMetric metaverse:VirtualObject)
-SubClassOf(metaverse:ResilienceMetric metaverse:InfrastructureDomain)
-SubClassOf(metaverse:ResilienceMetric metaverse:MiddlewareLayer)
+SubClassOf(mv:ResilienceMetric metaverse:VirtualObject)
+SubClassOf(mv:ResilienceMetric metaverse:InfrastructureDomain)
+SubClassOf(mv:ResilienceMetric metaverse:MiddlewareLayer)
 
 ;; Metric Categories
-SubClassOf(metaverse:ResilienceMetric metaverse:AvailabilityMeasurement)
-SubClassOf(metaverse:ResilienceMetric metaverse:RecoveryTimeMeasurement)
-SubClassOf(metaverse:ResilienceMetric metaverse:FaultToleranceIndicator)
-SubClassOf(metaverse:ResilienceMetric metaverse:RedundancyLevel)
+SubClassOf(mv:ResilienceMetric metaverse:AvailabilityMeasurement)
+SubClassOf(mv:ResilienceMetric metaverse:RecoveryTimeMeasurement)
+SubClassOf(mv:ResilienceMetric metaverse:FaultToleranceIndicator)
+SubClassOf(mv:ResilienceMetric metaverse:RedundancyLevel)
 
 ;; Quality Attributes
-SubClassOf(metaverse:ResilienceMetric metaverse:ReliabilityScore)
-SubClassOf(metaverse:ResilienceMetric metaverse:RobustnessIndicator)
-SubClassOf(metaverse:ResilienceMetric metaverse:AdaptabilityMeasure)
+SubClassOf(mv:ResilienceMetric metaverse:ReliabilityScore)
+SubClassOf(mv:ResilienceMetric metaverse:RobustnessIndicator)
+SubClassOf(mv:ResilienceMetric metaverse:AdaptabilityMeasure)
 
 ;; Operational Aspects
-SubClassOf(metaverse:ResilienceMetric metaverse:PerformanceUnderStress)
-SubClassOf(metaverse:ResilienceMetric metaverse:GracefulDegradation)
-SubClassOf(metaverse:ResilienceMetric metaverse:DisasterRecoveryReadiness)
+SubClassOf(mv:ResilienceMetric metaverse:PerformanceUnderStress)
+SubClassOf(mv:ResilienceMetric metaverse:GracefulDegradation)
+SubClassOf(mv:ResilienceMetric metaverse:DisasterRecoveryReadiness)
 
 ;; Standards Integration
-SubClassOf(metaverse:ResilienceMetric metaverse:SLAComplianceIndicator)
-SubClassOf(metaverse:ResilienceMetric metaverse:ISO25010Aligned)
+SubClassOf(mv:ResilienceMetric metaverse:SLAComplianceIndicator)
+SubClassOf(mv:ResilienceMetric metaverse:ISO25010Aligned)
 ```
 
 </details>

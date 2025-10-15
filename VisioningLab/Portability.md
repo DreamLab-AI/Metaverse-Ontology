@@ -15,28 +15,28 @@ Unlike simple data export, Portability ensures functional equivalence across pla
 ;; OWL Functional Syntax - Portability Process Axioms
 
 ;; Core Classification
-SubClassOf(mv:Portability mv:VirtualProcess)
-SubClassOf(mv:Portability mv:InfrastructureDomain)
-SubClassOf(mv:Portability mv:MiddlewareLayer)
+SubClassOf(metaverse:Portability metaverse:VirtualProcess)
+SubClassOf(metaverse:Portability metaverse:InfrastructureDomain)
+SubClassOf(metaverse:Portability metaverse:MiddlewareLayer)
 
 ;; Process Characteristics
-SubClassOf(mv:Portability mv:CrossPlatformMigration)
-SubClassOf(mv:Portability mv:AssetTransformation)
-SubClassOf(mv:Portability mv:FormatConversion)
+SubClassOf(metaverse:Portability metaverse:CrossPlatformMigration)
+SubClassOf(metaverse:Portability metaverse:AssetTransformation)
+SubClassOf(metaverse:Portability metaverse:FormatConversion)
 
 ;; Technical Capabilities
-SubClassOf(mv:Portability mv:SemanticPreservation)
-SubClassOf(mv:Portability mv:ValidationProtocol)
-SubClassOf(mv:Portability mv:InteroperabilityBridge)
+SubClassOf(metaverse:Portability metaverse:SemanticPreservation)
+SubClassOf(metaverse:Portability metaverse:ValidationProtocol)
+SubClassOf(metaverse:Portability metaverse:InteroperabilityBridge)
 
 ;; Standards Alignment
-SubClassOf(mv:Portability mv:StandardsCompliance)
-SubClassOf(mv:Portability mv:MetadataMapping)
-SubClassOf(mv:Portability mv:IdentityFederation)
+SubClassOf(metaverse:Portability metaverse:StandardsCompliance)
+SubClassOf(metaverse:Portability metaverse:MetadataMapping)
+SubClassOf(metaverse:Portability metaverse:IdentityFederation)
 
 ;; Quality Attributes
-SubClassOf(mv:Portability mv:FidelityMaintenance)
-SubClassOf(mv:Portability mv:BackwardCompatibility)
+SubClassOf(metaverse:Portability metaverse:FidelityMaintenance)
+SubClassOf(metaverse:Portability metaverse:BackwardCompatibility)
 ```
 
 </details>

@@ -65,7 +65,7 @@
 
 		  # Must maintain consistency with ontology
 		  SubClassOf(mv:GlossaryIndex
-		    DataHasValue(mv:synchronizedWithOntology "true"^^xsd:boolean)
+		    DataSomeValuesFrom(mv:synchronizedWithOntology xsd:boolean[true])
 		  )
 
 		  # Supports multiple languages

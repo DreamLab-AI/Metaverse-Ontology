@@ -37,9 +37,13 @@
 		  )
 
 		  # Layer ordering constraints - layers have explicit ordering
-		  # Note: The hasLayerOrder data property range is defined separately
 		  SubClassOf(mv:MetaverseArchitectureStack
-		    ObjectMinCardinality(4 mv:hasLayer mv:ArchitectureLayer)
+		    ObjectAllValuesFrom(mv:hasLayer
+		      ObjectIntersectionOf(
+		        mv:ArchitectureLayer
+		        ObjectSomeValuesFrom(mv:hasLayerOrder xsd:positiveInteger)
+		      )
+		    )
 		  )
 
 		  # Interface specifications between layers
@@ -66,12 +70,17 @@
 		    )
 		  )
 
-		  # Layer dependency constraints
-		  # Note: Upper layers depend on lower layers (layer with higher order depends on layers with lower order)
-		  # This constraint cannot be expressed in pure OWL 2 DL and would require SWRL rules or custom reasoner logic
+		  # Layer dependency constraints - upper layers depend on lower layers
 		  SubClassOf(mv:MetaverseArchitectureStack
 		    ObjectAllValuesFrom(mv:hasLayer
-		      ObjectAllValuesFrom(mv:dependsOnLayer mv:ArchitectureLayer)
+		      ObjectAllValuesFrom(mv:dependsOnLayer
+		        ObjectIntersectionOf(
+		          mv:ArchitectureLayer
+		          ObjectSomeValuesFrom(mv:hasLayerOrder
+		            DataHasValue(lessThan(mv:thisLayerOrder))
+		          )
+		        )
+		      )
 		    )
 		  )
 

@@ -1,0 +1,284 @@
+{
+  "summary": {
+    "total_errors": 18,
+    "error_categories": 4,
+    "files_affected": "~10-15 markdown files",
+    "semantic_impact": "High - all errors encode meaningful constraints"
+  },
+  "error_types": [
+    {
+      "type": "ObjectExactCardinality_with_datatype",
+      "count": 7,
+      "severity": "High",
+      "description": "Using ObjectExactCardinality with datatype range instead of DataExactCardinality",
+      "affected_files": [
+        "Non-Fungible Token (NFT).md",
+        "Fractionalized NFT.md",
+        "Cryptocurrency.md",
+        "Token Bonding Curve.md",
+        "Trust Score Metric.md"
+      ],
+      "examples": [
+        {
+          "line": 1202,
+          "class": "mv:NonFungibleToken",
+          "property": "mv:hasUniqueIdentifier",
+          "constraint": "exactly 1 string value"
+        },
+        {
+          "line": 1515,
+          "class": "mv:FractionalizedNFT",
+          "property": "mv:hasTotalSupply",
+          "constraint": "exactly 1 integer value"
+        },
+        {
+          "line": 8140,
+          "class": "mv:TrustScoreMetric",
+          "property": "mv:hasScoreValue",
+          "constraint": "exactly 1 decimal value"
+        }
+      ],
+      "semantic_value": {
+        "preserves": "Exact cardinality constraints on data properties",
+        "encodes": "Required singular values (IDs, timestamps, scores)",
+        "business_logic": "Uniqueness and identity constraints"
+      },
+      "owl2_fixes": [
+        {
+          "fix_name": "DataExactCardinality (RECOMMENDED)",
+          "syntax": "DataExactCardinality(1 mv:hasUniqueIdentifier xsd:string)",
+          "description": "Use DataExactCardinality for datatype properties",
+          "preserves_semantics": "100%",
+          "example_before": "ObjectExactCardinality(1 mv:hasUniqueIdentifier xsd:string)",
+          "example_after": "DataExactCardinality(1 mv:hasUniqueIdentifier xsd:string)"
+        },
+        {
+          "fix_name": "DataMinCardinality + DataMaxCardinality",
+          "syntax": "DataMinCardinality(1 mv:property xsd:type) + DataMaxCardinality(1 mv:property xsd:type)",
+          "description": "Split into min and max constraints",
+          "preserves_semantics": "100%",
+          "example_after": "SubClassOf(C, DataMinCardinality(1 mv:hasUniqueIdentifier xsd:string))\nSubClassOf(C, DataMaxCardinality(1 mv:hasUniqueIdentifier xsd:string))"
+        },
+        {
+          "fix_name": "Functional Data Property",
+          "syntax": "FunctionalDataProperty(mv:property) + DataPropertyRange",
+          "description": "Declare property as functional (at most 1 value)",
+          "preserves_semantics": "90% - loses 'exactly 1' (allows 0)",
+          "example_after": "FunctionalDataProperty(mv:hasUniqueIdentifier)\nDataPropertyRange(mv:hasUniqueIdentifier xsd:string)"
+        }
+      ]
+    },
+    {
+      "type": "ObjectHasValue_with_literal",
+      "count": 3,
+      "severity": "Critical",
+      "description": "Using ObjectHasValue with literal values instead of DataHasValue",
+      "affected_files": [
+        "Non-Fungible Token (NFT).md",
+        "Cryptocurrency.md",
+        "Crypto Token.md"
+      ],
+      "examples": [
+        {
+          "line": 1205,
+          "class": "mv:NonFungibleToken",
+          "property": "mv:isFungible",
+          "value": "false",
+          "constraint": "isFungible must be false"
+        },
+        {
+          "line": 2571,
+          "class": "mv:Cryptocurrency",
+          "property": "mv:isFungible",
+          "value": "true",
+          "constraint": "isFungible must be true"
+        }
+      ],
+      "semantic_value": {
+        "preserves": "Class-defining boolean discriminators",
+        "encodes": "Fundamental type distinctions (fungible vs non-fungible)",
+        "business_logic": "Core classification logic for token types"
+      },
+      "owl2_fixes": [
+        {
+          "fix_name": "DataHasValue (RECOMMENDED)",
+          "syntax": "DataHasValue(mv:isFungible \"false\"^^xsd:boolean)",
+          "description": "Use DataHasValue for data property values",
+          "preserves_semantics": "100%",
+          "example_before": "ObjectHasValue(mv:isFungible \"false\"^^xsd:boolean)",
+          "example_after": "DataHasValue(mv:isFungible \"false\"^^xsd:boolean)"
+        },
+        {
+          "fix_name": "Named Class Hierarchy",
+          "syntax": "Create FungibleAsset and NonFungibleAsset superclasses",
+          "description": "Model as disjoint subclasses instead of property constraints",
+          "preserves_semantics": "100% with better modeling",
+          "example_after": "Declaration(Class(mv:FungibleAsset))\nDeclaration(Class(mv:NonFungibleAsset))\nDisjointClasses(mv:FungibleAsset mv:NonFungibleAsset)\nSubClassOf(mv:NonFungibleToken mv:NonFungibleAsset)"
+        },
+        {
+          "fix_name": "Enumerated Data Range",
+          "syntax": "DataOneOf with boolean values",
+          "description": "Restrict to specific value using data range",
+          "preserves_semantics": "100%",
+          "example_after": "SubClassOf(mv:NonFungibleToken DataSomeValuesFrom(mv:isFungible DataOneOf(\"false\"^^xsd:boolean)))"
+        }
+      ]
+    },
+    {
+      "type": "DataSomeValuesFrom",
+      "count": 6,
+      "severity": "Medium",
+      "description": "DataSomeValuesFrom with potentially invalid range syntax",
+      "affected_files": [
+        "Threat Surface Map.md",
+        "Digital Ontology Repository.md",
+        "Explainable AI (XAI).md"
+      ],
+      "examples": [
+        {
+          "line": 4473,
+          "class": "mv:ThreatSurfaceMap",
+          "property": "mv:hasOverallRiskScore",
+          "range": "xsd:decimal",
+          "constraint": "has some decimal risk score"
+        },
+        {
+          "line": 6003,
+          "class": "mv:DigitalOntologyRepository",
+          "property": "mv:synchronizedWithOntology",
+          "range": "xsd:boolean[true]",
+          "constraint": "synchronized must be true"
+        }
+      ],
+      "semantic_value": {
+        "preserves": "Data property existence and range constraints",
+        "encodes": "Required attributes (scores, flags, timestamps)",
+        "business_logic": "Validation and quality metrics"
+      },
+      "owl2_fixes": [
+        {
+          "fix_name": "Valid DataSomeValuesFrom (RECOMMENDED for simple ranges)",
+          "syntax": "DataSomeValuesFrom(mv:hasOverallRiskScore xsd:decimal)",
+          "description": "Ensure valid datatype in range (already valid for basic cases)",
+          "preserves_semantics": "100%",
+          "validity": "Lines 4473, 6800, 6803, 6806 are already valid"
+        },
+        {
+          "fix_name": "DataHasValue (for specific values)",
+          "syntax": "DataHasValue(mv:synchronizedWithOntology \"true\"^^xsd:boolean)",
+          "description": "For [true] constraints, use DataHasValue",
+          "preserves_semantics": "100%",
+          "example_before": "DataSomeValuesFrom(mv:synchronizedWithOntology xsd:boolean[true])",
+          "example_after": "DataHasValue(mv:synchronizedWithOntology \"true\"^^xsd:boolean)"
+        },
+        {
+          "fix_name": "DataAllValuesFrom + DataMinCardinality",
+          "syntax": "DataAllValuesFrom(P range) + DataMinCardinality(1 P)",
+          "description": "Ensure at least one value exists in range",
+          "preserves_semantics": "100%"
+        }
+      ]
+    },
+    {
+      "type": "DataHasValue_invalid_syntax",
+      "count": 2,
+      "severity": "Critical",
+      "description": "Invalid DataHasValue syntax (functions or malformed expressions)",
+      "affected_files": [
+        "Metaverse Architecture Stack.md",
+        "Real-Time Rendering Pipeline.md"
+      ],
+      "examples": [
+        {
+          "line": 3655,
+          "class": "mv:ArchitectureLayer",
+          "expression": "lessThan(mv:thisLayerOrder)",
+          "constraint": "Order less than current layer"
+        },
+        {
+          "line": 8388,
+          "class": "mv:RealTimeRenderingPipeline",
+          "property": "mv:requiresRealTimeProcessing",
+          "value": "true"
+        }
+      ],
+      "semantic_value": {
+        "preserves": "Ordering constraints and processing requirements",
+        "encodes": "Hierarchical relationships and performance constraints",
+        "business_logic": "Layer ordering and real-time requirements"
+      },
+      "owl2_fixes": [
+        {
+          "fix_name": "Object Property for Ordering (RECOMMENDED for lessThan)",
+          "syntax": "ObjectSomeValuesFrom(mv:isAbove mv:ArchitectureLayer)",
+          "description": "Model ordering as object property relationships",
+          "preserves_semantics": "100% with better modeling",
+          "example_before": "DataHasValue(lessThan(mv:thisLayerOrder))",
+          "example_after": "ObjectSomeValuesFrom(mv:isAbove mv:ArchitectureLayer)\n// Plus axiom: TransitiveProperty(mv:isAbove)"
+        },
+        {
+          "fix_name": "DataHasValue (for simple boolean)",
+          "syntax": "DataHasValue(mv:requiresRealTimeProcessing \"true\"^^xsd:boolean)",
+          "description": "Fix malformed DataHasValue syntax",
+          "preserves_semantics": "100%",
+          "example_before": "DataHasValue(mv:requiresRealTimeProcessing \"true\"^^xsd:boolean) [malformed]",
+          "example_after": "DataHasValue(mv:requiresRealTimeProcessing \"true\"^^xsd:boolean)"
+        },
+        {
+          "fix_name": "SWRL Rules",
+          "syntax": "Use SWRL for complex comparisons",
+          "description": "Express lessThan logic as SWRL rule",
+          "preserves_semantics": "100% with reasoning",
+          "example_after": "// SWRL: Layer(?l1) ^ Layer(?l2) ^ thisLayerOrder(?l1, ?o1) ^ thisLayerOrder(?l2, ?o2) ^ lessThan(?o1, ?o2) -> isBelow(?l1, ?l2)"
+        }
+      ]
+    }
+  ],
+  "fix_priority_recommendations": [
+    {
+      "priority": 1,
+      "error_type": "ObjectHasValue_with_literal",
+      "reason": "Critical parsing errors, simplest fix (find-replace)",
+      "estimated_time": "5 minutes",
+      "fix": "Replace ObjectHasValue with DataHasValue globally"
+    },
+    {
+      "priority": 2,
+      "error_type": "ObjectExactCardinality_with_datatype",
+      "reason": "High frequency, clear semantic pattern",
+      "estimated_time": "10 minutes",
+      "fix": "Replace ObjectExactCardinality with DataExactCardinality"
+    },
+    {
+      "priority": 3,
+      "error_type": "DataSomeValuesFrom",
+      "reason": "Some may already be valid, needs case-by-case analysis",
+      "estimated_time": "15 minutes",
+      "fix": "Fix [true] syntax to use DataHasValue"
+    },
+    {
+      "priority": 4,
+      "error_type": "DataHasValue_invalid_syntax",
+      "reason": "Complex modeling decisions required",
+      "estimated_time": "30 minutes",
+      "fix": "Redesign ordering as object properties with transitivity"
+    }
+  ],
+  "validation": {
+    "files_to_fix": [
+      "VisioningLab/Non-Fungible Token (NFT).md",
+      "VisioningLab/Cryptocurrency.md",
+      "VisioningLab/Crypto Token.md",
+      "VisioningLab/Fractionalized NFT.md",
+      "VisioningLab/Token Bonding Curve.md",
+      "VisioningLab/Trust Score Metric.md",
+      "VisioningLab/Threat Surface Map.md",
+      "VisioningLab/Digital Ontology Repository.md",
+      "VisioningLab/Explainable AI (XAI).md",
+      "VisioningLab/Metaverse Architecture Stack.md",
+      "VisioningLab/Real-Time Rendering Pipeline.md"
+    ],
+    "automated_fixes_possible": 16,
+    "manual_review_needed": 2
+  }
+}

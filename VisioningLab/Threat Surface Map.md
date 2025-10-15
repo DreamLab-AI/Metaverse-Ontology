@@ -95,7 +95,7 @@
 		  )
 
 		  SubClassOf(mv:ThreatSurfaceMap
-		    DataSomeValuesFrom(mv:hasOverallRiskScore xsd:decimal)
+		    DataSomeValuesFrom(mv:hasOverallRiskScore rdfs:Literal)
 		  )
 
 		  # Framework alignment

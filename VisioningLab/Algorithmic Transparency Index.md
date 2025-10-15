@@ -59,16 +59,16 @@
 
 		  # Scoring and evaluation
 		  SubClassOf(mv:AlgorithmicTransparencyIndex
-		    DataSomeValuesFrom(mv:hasTransparencyScore xsd:decimal)
+		    DataSomeValuesFrom(mv:hasTransparencyScore rdfs:Literal)
 		  )
 
 		  SubClassOf(mv:AlgorithmicTransparencyIndex
-		    DataSomeValuesFrom(mv:hasComplianceLevel xsd:string)
+		    DataSomeValuesFrom(mv:hasComplianceLevel rdfs:Literal)
 		  )
 
 		  # Temporal tracking
 		  SubClassOf(mv:AlgorithmicTransparencyIndex
-		    DataSomeValuesFrom(mv:hasAssessmentDate xsd:dateTime)
+		    DataSomeValuesFrom(mv:hasAssessmentDate rdfs:Literal)
 		  )
 
 		  # Audit and verification

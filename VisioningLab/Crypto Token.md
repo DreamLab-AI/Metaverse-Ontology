@@ -66,7 +66,7 @@
 
 		  # Token must have unique identifier
 		  SubClassOf(mv:CryptoToken
-		    ObjectExactCardinality(1 mv:hasTokenIdentifier xsd:string)
+		    DataExactCardinality(1 mv:hasTokenIdentifier)
 		  )
 		  ```
 - ## About Crypto Token

@@ -66,7 +66,7 @@
 
 		  # Loyalty tokens are typically fungible within program
 		  SubClassOf(mv:LoyaltyToken
-		    ObjectHasValue(mv:isFungible "true"^^xsd:boolean)
+		    DataHasValue(mv:isFungible "true"^^xsd:boolean)
 		  )
 		  ```
 - ## About Loyalty Token

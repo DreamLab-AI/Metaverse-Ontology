@@ -51,12 +51,12 @@
 
 		  # NFTs must have unique identifiers
 		  SubClassOf(mv:NonFungibleToken
-		    ObjectExactCardinality(1 mv:hasUniqueIdentifier xsd:string)
+		    DataExactCardinality(1 mv:hasUniqueIdentifier)
 		  )
 
 		  # NFTs are non-fungible (defining characteristic)
 		  SubClassOf(mv:NonFungibleToken
-		    ObjectHasValue(mv:isFungible "false"^^xsd:boolean)
+		    DataHasValue(mv:isFungible "false"^^xsd:boolean)
 		  )
 
 		  # NFTs enable digital ownership

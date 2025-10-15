@@ -71,7 +71,7 @@
 
 		  # Stablecoins are fungible
 		  SubClassOf(mv:Stablecoin
-		    ObjectHasValue(mv:isFungible "true"^^xsd:boolean)
+		    DataHasValue(mv:isFungible "true"^^xsd:boolean)
 		  )
 
 		  # Collateralized stablecoins require reserves

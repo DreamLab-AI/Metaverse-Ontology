@@ -67,7 +67,7 @@
 
 		  # Cryptocurrency has unique symbol
 		  SubClassOf(mv:Cryptocurrency
-		    ObjectExactCardinality(1 mv:hasCurrencySymbol xsd:string)
+		    DataExactCardinality(1 mv:hasCurrencySymbol)
 		  )
 
 		  # Cryptocurrency types distinction

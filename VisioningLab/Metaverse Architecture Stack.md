@@ -71,16 +71,11 @@
 		  )
 
 		  # Layer dependency constraints - upper layers depend on lower layers
+		  # Note: Arithmetic comparison (lessThan) not expressible in OWL 2 DL
+		  # Layer ordering must be validated through application logic
 		  SubClassOf(mv:MetaverseArchitectureStack
 		    ObjectAllValuesFrom(mv:hasLayer
-		      ObjectAllValuesFrom(mv:dependsOnLayer
-		        ObjectIntersectionOf(
-		          mv:ArchitectureLayer
-		          ObjectSomeValuesFrom(mv:hasLayerOrder
-		            DataHasValue(lessThan(mv:thisLayerOrder))
-		          )
-		        )
-		      )
+		      ObjectAllValuesFrom(mv:dependsOnLayer mv:ArchitectureLayer)
 		    )
 		  )
 

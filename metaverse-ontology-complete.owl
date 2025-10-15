@@ -1,0 +1,569 @@
+Prefix(mv:=<https://metaverse-ontology.org/>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(dc:=<http://purl.org/dc/elements/1.1/>)
+Prefix(dcterms:=<http://purl.org/dc/terms/>)
+Prefix(etsi:=<https://etsi.org/ontology/>)
+Prefix(iso:=<https://www.iso.org/ontology/>)
+Ontology(<https://metaverse-ontology.org/>
+  <https://metaverse-ontology.org/1.0>
+
+  Declaration(...)
+
+  {:title "All Metaverse Ontology Concepts"
+  :query [:find (pull ?p [*])
+  :where
+  [?p :block/properties ?props]
+  [(get ?props :metaverseontology) ?v]
+  [(= ?v true)]]}
+
+  {:title "All Virtual Entities"
+  :query [:find (pull ?p [*])
+  :where
+  [?p :block/properties ?props]
+  [(get ?props :metaverseontology) ?v]
+  [(= ?v true)]
+  [(get ?props :owl:physicality) ?phys]
+  [(= ?phys "VirtualEntity")]]}
+
+  {:title "Infrastructure Domain Concepts"
+  :query [:find (pull ?p [*])
+  :where
+  [?p :block/properties ?props]
+  [(get ?props :metaverseontology) ?v]
+  [(= ?v true)]
+  [?p :block/refs ?r]
+  [?r :block/name "infrastructuredomain"]]}
+
+  {:title "Draft Ontology Concepts"
+  :query [:find (pull ?p [*])
+  :where
+  [?p :block/properties ?props]
+  [(get ?props :metaverseontology) ?v]
+  [(= ?v true)]
+  [(get ?props :maturity) ?m]
+  [(= ?m "draft")]]}
+
+  {:title "All Agent Concepts"
+  :query [:find (pull ?p [*])
+  :where
+  [?p :block/properties ?props]
+  [(get ?props :metaverseontology) ?v]
+  [(= ?v true)]
+  [(get ?props :owl:role) ?role]
+  [(= ?role "Agent")]]}
+
+  {:title "Concepts Requiring 3D Rendering"
+  :query [:find (pull ?p [*])
+  :where
+  [?p :block/properties ?props]
+  [(get ?props :metaverseontology) ?v]
+  [(= ?v true)]
+  [?p :block/refs ?r]
+  [?r :block/name "3d rendering engine"]
+  [?p :block/content ?c]
+  [(clojure.string/includes? ?c "requires::")]]}
+
+  {:title "Recently Updated Ontology Concepts"
+  :query [:find (pull ?p [*])
+  :in $ ?start ?today
+  :where
+  [?p :block/properties ?props]
+  [(get ?props :metaverseontology) ?v]
+  [(= ?v true)]
+  [?p :block/updated-at ?updated]
+  [(>= ?updated ?start)]
+  [(<= ?updated ?today)]]
+  :inputs [:7d-before :today]}
+
+  {:title "Virtual Objects"
+  :query [:find (pull ?p [*])
+  :where
+  [?p :block/properties ?props]
+  [(get ?props :metaverseontology) ?v]
+  [(= ?v true)]
+  [(get ?props :owl:inferred-class) ?inferred]
+  [(= ?inferred "mv:VirtualObject")]]}
+
+  {:title "Cross-Domain Concepts"
+  :query [:find (pull ?p [:block/name :block/properties])
+  :where
+  [?p :block/properties ?props]
+  [(get ?props :metaverseontology) ?v]
+  [(= ?v true)]
+  [(get ?props :belongstodomain) ?domains]
+  [(clojure.string/includes? ?domains ",")]]}
+
+  owl:functional-syntax:: |
+  Declaration(...)
+
+  Declaration(Class(mv:PhysicsEngine))
+  SubClassOf(mv:PhysicsEngine mv:VirtualEntity)
+  SubClassOf(mv:PhysicsEngine mv:Object)
+  SubClassOf(mv:PhysicsEngine
+  ObjectSomeValuesFrom(mv:belongsToDomain mv:CreativeMediaDomain)
+  )
+
+  SubClassOf(mv:PhysicsEngine
+  ObjectSomeValuesFrom(mv:hasCapability mv:PhysicsSimulation)
+  )
+  SubClassOf(mv:PhysicsEngine
+  ObjectSomeValuesFrom(mv:requires mv:SceneGraph)
+  )
+
+  SubClassOf(mv:PolicyEngine
+  ObjectSomeValuesFrom(mv:hasCapability mv:RuleEvaluation)
+  )
+  SubClassOf(mv:PolicyEngine
+  ObjectSomeValuesFrom(mv:requires mv:PolicyDefinition)
+  )
+
+  Declaration(Class(mv:[ClassName]))
+  SubClassOf(mv:[ClassName] mv:[Physicality]Entity)
+  SubClassOf(mv:[ClassName] mv:[Role])
+
+  SubClassOf(mv:Avatar
+  ObjectExactCardinality(1 mv:represents mv:Agent)
+  )
+  SubClassOf(mv:DigitalTwin
+  ObjectSomeValuesFrom(mv:synchronizesWith mv:PhysicalEntity)
+  )
+  SubObjectPropertyOf(
+  ObjectPropertyChain(mv:hasPart mv:hasPart)
+  mv:hasPart
+  )
+
+  {{query (property domain)}}
+
+  {{query (property maturity mature)}}
+
+  {{query (property ontology-status needs-relationships)}}
+
+  (Declaration (Class :Interoperability))
+  (EquivalentClasses
+  :Interoperability
+  (ObjectIntersectionOf
+  :VirtualProcess
+  :IntegrationCapability
+  (ObjectSomeValuesFrom :enablesDataExchange :CrossSystemCommunication)
+  (ObjectSomeValuesFrom :providesProtocolCompatibility :StandardProtocol)))
+  (SubClassOf :Interoperability :VirtualProcess)
+  (SubClassOf :Interoperability :InfrastructureDomain)
+  (SubClassOf :Interoperability :MiddlewareLayer)
+  (SubClassOf :Interoperability :IntegrationCapability)
+  (SubClassOf :Interoperability :SystemProperty)
+  (SubClassOf :Interoperability
+  (ObjectSomeValuesFrom :enablesDataExchange :InformationTransfer))
+  (SubClassOf :Interoperability
+  (ObjectSomeValuesFrom :providesProtocolCompatibility :MultiProtocolSupport))
+  (SubClassOf :Interoperability
+  (ObjectSomeValuesFrom :performsSemanticMapping :DataModelTranslation))
+  (SubClassOf :Interoperability
+  (ObjectSomeValuesFrom :requiresStandardCompliance :SharedSpecification))
+  (SubClassOf :Interoperability
+  (ObjectSomeValuesFrom :coordinatesCrossPlatform :MultiSystemWorkflow))
+  (SubClassOf :Interoperability
+  (ObjectSomeValuesFrom :implementsProtocolNegotiation :DynamicCompatibility))
+  (SubClassOf :Interoperability
+  (ObjectSomeValuesFrom :performsDataTransformation :FormatConversion))
+  (SubClassOf :Interoperability
+  (ObjectSomeValuesFrom :providesInterfaceAdaptation :SystemBridging))
+  (SubClassOf :Interoperability
+  (ObjectSomeValuesFrom :enablesFederatedServices :DistributedCapability))
+  (DisjointClasses :Interoperability :SystemIsolation)
+  (DisjointClasses :Interoperability :ProprietaryIntegration)
+  (FunctionalObjectProperty :performsSemanticMapping)
+  (ObjectPropertyDomain :enablesDataExchange :Interoperability)
+  (ObjectPropertyRange :providesProtocolCompatibility :CommunicationStandard)
+  (TransitiveObjectProperty :coordinatesCrossPlatform)
+  (SymmetricObjectProperty :sharesIntegrationProtocol)
+  (SubClassOf :Interoperability
+  (ObjectMinCardinality 2 :providesProtocolCompatibility :StandardProtocol))
+  (SubClassOf :Interoperability
+  (ObjectMinCardinality 1 :performsSemanticMapping :OntologyAlignment))
+  (SubClassOf :Interoperability
+  (ObjectIntersectionOf
+  (ObjectSomeValuesFrom :requires :StandardCompliance)
+  (ObjectSomeValuesFrom :enables :DataPortability)
+  (ObjectAllValuesFrom :dependsOn :NetworkConnectivity)))
+  (DataPropertyAssertion :integrationLatency :Interoperability "10-100ms"^^xsd:string)
+  (DataPropertyAssertion :supportedProtocols :Interoperability "REST,GraphQL,gRPC,SOAP"^^xsd:string)
+  (DataPropertyAssertion :standardsCompliance :Interoperability "W3C,OMA3,FHIR,IBC"^^xsd:string)
+
+  (Declaration (Class :WorldInstance))
+  (SubClassOf :WorldInstance :VirtualWorld)
+  (SubClassOf :WorldInstance :ComputeResource)
+  (SubClassOf :WorldInstance :SessionContext)
+  (SubClassOf :WorldInstance :RuntimeEnvironment)
+  (SubClassOf :WorldInstance
+  (ObjectSomeValuesFrom :hasInstanceTemplate :WorldBlueprint))
+  (SubClassOf :WorldInstance
+  (ObjectSomeValuesFrom :managesUserSession :UserSession))
+  (SubClassOf :WorldInstance
+  (ObjectSomeValuesFrom :allocatesResourcePool :ComputeResourcePool))
+  (SubClassOf :WorldInstance
+  (ObjectSomeValuesFrom :maintainsStateIsolation :IsolatedState))
+  (SubClassOf :WorldInstance
+  (ObjectSomeValuesFrom :providesSessionBoundary :SessionBoundary))
+  (SubClassOf :WorldInstance
+  (ObjectSomeValuesFrom :supportsPlayerSharding :PlayerShardingStrategy))
+  (SubClassOf :WorldInstance
+  (ObjectSomeValuesFrom :enablesDynamicScaling :ScalingPolicy))
+  (SubClassOf :WorldInstance
+  (ObjectSomeValuesFrom :followsLifecycleProtocol :InstanceLifecycle))
+  (SubClassOf :WorldInstance
+  (ObjectSomeValuesFrom :implementsLoadBalancing :LoadBalancingStrategy))
+  (DisjointClasses :WorldInstance :WorldTemplate :PersistentWorld)
+  (Declaration (ObjectProperty :hasInstanceTemplate))
+  (Declaration (ObjectProperty :managesUserSession))
+  (Declaration (ObjectProperty :allocatesResourcePool))
+  (Declaration (ObjectProperty :maintainsStateIsolation))
+  (Declaration (ObjectProperty :providesSessionBoundary))
+  (Declaration (ObjectProperty :supportsPlayerSharding))
+  (Declaration (ObjectProperty :enablesDynamicScaling))
+  (Declaration (ObjectProperty :followsLifecycleProtocol))
+  (Declaration (ObjectProperty :implementsLoadBalancing))
+  (DataPropertyAssertion :hasInstanceID :WorldInstance "instance-uuid"^^xsd:string)
+  (DataPropertyAssertion :hasPlayerCapacity :WorldInstance 100^^xsd:integer)
+  (DataPropertyAssertion :hasLifetimeSeconds :WorldInstance 3600^^xsd:integer)
+  (DataPropertyAssertion :hasMemoryAllocationMB :WorldInstance 2048^^xsd:integer)
+  (AnnotationAssertion rdfs:label :WorldInstance "World Instance"@en)
+  (AnnotationAssertion rdfs:comment :WorldInstance
+  "Specific runtime instantiation of a virtual world for concurrent users or sessions"@en)
+
+  SubClassOf(metaverse:Portability metaverse:VirtualProcess)
+  SubClassOf(metaverse:Portability metaverse:InfrastructureDomain)
+  SubClassOf(metaverse:Portability metaverse:MiddlewareLayer)
+  SubClassOf(metaverse:Portability metaverse:CrossPlatformMigration)
+  SubClassOf(metaverse:Portability metaverse:AssetTransformation)
+  SubClassOf(metaverse:Portability metaverse:FormatConversion)
+  SubClassOf(metaverse:Portability metaverse:SemanticPreservation)
+  SubClassOf(metaverse:Portability metaverse:ValidationProtocol)
+  SubClassOf(metaverse:Portability metaverse:InteroperabilityBridge)
+  SubClassOf(metaverse:Portability metaverse:StandardsCompliance)
+  SubClassOf(metaverse:Portability metaverse:MetadataMapping)
+  SubClassOf(metaverse:Portability metaverse:IdentityFederation)
+  SubClassOf(metaverse:Portability metaverse:FidelityMaintenance)
+  SubClassOf(metaverse:Portability metaverse:BackwardCompatibility)
+
+  (Declaration (Class :HardwarePlatformAgnostic))
+  (EquivalentClasses
+  :HardwarePlatformAgnostic
+  (ObjectIntersectionOf
+  :VirtualObject
+  :ArchitecturalQuality
+  (ObjectSomeValuesFrom :hasAbstractionLayer :PlatformAbstractionInterface)
+  (ObjectSomeValuesFrom :providesPortability :CrossPlatformCapability)))
+  (SubClassOf :HardwarePlatformAgnostic :VirtualObject)
+  (SubClassOf :HardwarePlatformAgnostic :InfrastructureDomain)
+  (SubClassOf :HardwarePlatformAgnostic :InfrastructureLayer)
+  (SubClassOf :HardwarePlatformAgnostic :DesignPrinciple)
+  (SubClassOf :HardwarePlatformAgnostic :ArchitecturalQuality)
+  (SubClassOf :HardwarePlatformAgnostic
+  (ObjectSomeValuesFrom :hasAbstractionLayer :HardwareAbstractionLayer))
+  (SubClassOf :HardwarePlatformAgnostic
+  (ObjectSomeValuesFrom :providesPortability :PlatformPortability))
+  (SubClassOf :HardwarePlatformAgnostic
+  (ObjectSomeValuesFrom :supportsStandard :PlatformNeutralStandard))
+  (SubClassOf :HardwarePlatformAgnostic
+  (ObjectSomeValuesFrom :enablesCrossPlatformDevelopment :MultiTargetFramework))
+  (SubClassOf :HardwarePlatformAgnostic
+  (ObjectSomeValuesFrom :minimizesHardwareDependency :HardwareIndependence))
+  (SubClassOf :HardwarePlatformAgnostic
+  (ObjectSomeValuesFrom :implementsAbstractionPrinciple :LayeredArchitecture))
+  (SubClassOf :HardwarePlatformAgnostic
+  (ObjectSomeValuesFrom :avoidsVendorLockin :VendorNeutrality))
+  (SubClassOf :HardwarePlatformAgnostic
+  (ObjectSomeValuesFrom :supportsVirtualization :VirtualExecutionEnvironment))
+  (SubClassOf :HardwarePlatformAgnostic
+  (ObjectSomeValuesFrom :enablesCodeReuse :CrossPlatformCodebase))
+  (DisjointClasses :HardwarePlatformAgnostic :HardwareSpecificOptimization)
+  (DisjointClasses :HardwarePlatformAgnostic :NativeBinaryCompilation)
+  (FunctionalObjectProperty :hasAbstractionLayer)
+  (ObjectPropertyDomain :providesPortability :HardwarePlatformAgnostic)
+  (ObjectPropertyRange :supportsStandard :PlatformNeutralStandard)
+  (TransitiveObjectProperty :enablesCrossPlatformDevelopment)
+  (SymmetricObjectProperty :sharesCompatibilityLayer)
+  (SubClassOf :HardwarePlatformAgnostic
+  (ObjectMinCardinality 1 :hasAbstractionLayer :AbstractionInterface))
+  (SubClassOf :HardwarePlatformAgnostic
+  (ObjectMinCardinality 2 :supportsStandard :IndustryStandard))
+  (SubClassOf :HardwarePlatformAgnostic
+  (ObjectIntersectionOf
+  (ObjectSomeValuesFrom :implements :AbstractionPrinciple)
+  (ObjectSomeValuesFrom :enables :Interoperability)
+  (ObjectAllValuesFrom :constrainedBy :PerformanceTradeoff)))
+  (DataPropertyAssertion :hasAbstractionOverhead :HardwarePlatformAgnostic "5-15%"^^xsd:string)
+  (DataPropertyAssertion :supportsArchitectures :HardwarePlatformAgnostic "x86,ARM,RISC-V,MIPS"^^xsd:string)
+  (DataPropertyAssertion :complianceStandard :HardwarePlatformAgnostic "POSIX,OCI,WASM"^^xsd:string)
+
+  {:query [:find (pull ?p [*])
+  :where
+  [?p :block/properties ?props]
+  [(get ?props :domain) ?d]
+  [(clojure.string/includes? ?d "Reality Capture / Creative")]]
+  }
+
+  SubClassOf(metaverse:Persistence metaverse:VirtualProcess)
+  SubClassOf(metaverse:Persistence metaverse:InfrastructureDomain)
+  SubClassOf(metaverse:Persistence metaverse:MiddlewareLayer)
+  SubClassOf(metaverse:Persistence metaverse:StatefulProcess)
+  SubClassOf(metaverse:Persistence metaverse:ContinuityMechanism)
+  SubClassOf(metaverse:Persistence metaverse:DataRetentionCapability)
+  SubClassOf(metaverse:Persistence metaverse:DurabilityGuarantee)
+  SubClassOf(metaverse:Persistence metaverse:ConsistencyProtocol)
+  SubClassOf(metaverse:Persistence metaverse:RecoveryMechanism)
+  SubClassOf(metaverse:Persistence metaverse:DistributedStateManagement)
+  SubClassOf(metaverse:Persistence metaverse:EventualConsistency)
+  SubClassOf(metaverse:Persistence metaverse:ReplicationStrategy)
+  SubClassOf(metaverse:Persistence metaverse:SessionManagement)
+
+  {:query [:find (pull ?p [*])
+  :where
+  [?p :block/properties ?props]
+  [(get ?props :domain) ?d]
+  [(clojure.string/includes? ?d "Virtual Economy")]]
+  }
+
+  {{query (property ontology-status needs-relationships)}}
+
+  {:query [:find ?term
+  :where
+  [?p :block/name ?term]
+  [?p :block/properties ?props]
+  [(missing? $ ?p :block/properties :domain)]]
+  }
+
+  {:query [:find ?term
+  :where
+  [?p :block/name ?term]
+  [?p :block/properties ?props]
+  [(missing? $ ?p :block/properties :is-a)]
+  [(missing? $ ?p :block/properties :has-part)]
+  [(missing? $ ?p :block/properties :related-to)]]
+  }
+
+  {:query [:find (pull ?p [*])
+  :where
+  [?p :block/properties ?props]
+  [(get ?props :domain) ?d]
+  [(clojure.string/includes? ?d "Interoperability")]]
+  }
+
+  {:query [:find (pull ?p [*])
+  :where
+  [?p :block/properties ?props]
+  [(get ?props :domain) ?d]
+  [(clojure.string/includes? ?d "Infrastructure/Data")]]
+  }
+
+  {:query [:find (pull ?p [*])
+  :where
+  [?p :block/properties ?props]
+  [(get ?props :domain) ?d]
+  [(clojure.string/includes? ?d "Security & Privacy")]]
+  }
+
+  {:query [:find (pull ?p [*])
+  :where
+  [?p :block/properties ?props]
+  [(get ?props :domain) ?d]
+  [(clojure.string/includes? ?d "Infrastructure / Interop")]]
+  }
+
+  (Declaration (Class :ImmersiveExperience))
+  (SubClassOf :ImmersiveExperience :VirtualExperience)
+  (SubClassOf :ImmersiveExperience :InteractionPattern)
+  (SubClassOf :ImmersiveExperience :SensoryInterface)
+  (SubClassOf :ImmersiveExperience :NarrativeFramework)
+  (SubClassOf :ImmersiveExperience
+  (ObjectSomeValuesFrom :evokesPresence :PresenceState))
+  (SubClassOf :ImmersiveExperience
+  (ObjectSomeValuesFrom :createsSpatialAwareness :SpatialCognition))
+  (SubClassOf :ImmersiveExperience
+  (ObjectSomeValuesFrom :inducesSuspensionOfDisbelief :CognitiveState))
+  (SubClassOf :ImmersiveExperience
+  (ObjectSomeValuesFrom :providesVisualStimuli :VisualRendering))
+  (SubClassOf :ImmersiveExperience
+  (ObjectSomeValuesFrom :providesSpatialAudio :AudioSpatializer))
+  (SubClassOf :ImmersiveExperience
+  (ObjectSomeValuesFrom :providesHapticFeedback :HapticDevice))
+  (SubClassOf :ImmersiveExperience
+  (ObjectSomeValuesFrom :evokesEmotionalResponse :EmotionalState))
+  (SubClassOf :ImmersiveExperience
+  (ObjectSomeValuesFrom :facilitatesFlowState :FlowExperience))
+  (SubClassOf :ImmersiveExperience
+  (ObjectSomeValuesFrom :engagesNarrative :StorytellingElement))
+  (SubClassOf :ImmersiveExperience
+  (ObjectSomeValuesFrom :enablesNaturalInteraction :NaturalUserInterface))
+  (SubClassOf :ImmersiveExperience
+  (ObjectSomeValuesFrom :providesResponsiveFeedback :ResponseSystem))
+  (SubClassOf :ImmersiveExperience
+  (ObjectSomeValuesFrom :measuredByPresenceQuestionnaire :PresenceMetric))
+  (SubClassOf :ImmersiveExperience
+  (ObjectSomeValuesFrom :assessedByEngagementMetrics :EngagementAnalytics))
+  (DisjointClasses :ImmersiveExperience :PassiveViewing :LowFidelityInteraction)
+  (Declaration (ObjectProperty :evokesPresence))
+  (Declaration (ObjectProperty :createsSpatialAwareness))
+  (Declaration (ObjectProperty :inducesSuspensionOfDisbelief))
+  (Declaration (ObjectProperty :providesVisualStimuli))
+  (Declaration (ObjectProperty :providesSpatialAudio))
+  (Declaration (ObjectProperty :providesHapticFeedback))
+  (Declaration (ObjectProperty :evokesEmotionalResponse))
+  (Declaration (ObjectProperty :facilitatesFlowState))
+  (Declaration (ObjectProperty :engagesNarrative))
+  (Declaration (ObjectProperty :enablesNaturalInteraction))
+  (Declaration (ObjectProperty :providesResponsiveFeedback))
+  (Declaration (ObjectProperty :measuredByPresenceQuestionnaire))
+  (Declaration (ObjectProperty :assessedByEngagementMetrics))
+  (DataPropertyAssertion :hasPresenceScore :ImmersiveExperience 8.5^^xsd:float)
+  (DataPropertyAssertion :hasEngagementRate :ImmersiveExperience 0.92^^xsd:float)
+  (DataPropertyAssertion :hasSensoryModalityCount :ImmersiveExperience 4^^xsd:integer)
+  (DataPropertyAssertion :hasAverageSessionDuration :ImmersiveExperience 35^^xsd:integer)
+  (AnnotationAssertion rdfs:label :ImmersiveExperience "Immersive Experience"@en)
+  (AnnotationAssertion rdfs:comment :ImmersiveExperience
+  "Deeply engaging virtual experience with high presence, sensory richness, and user engagement"@en)
+
+  (Declaration (Class :OwnershipFreedomDistributed))
+  (EquivalentClasses
+  :OwnershipFreedomDistributed
+  (ObjectIntersectionOf
+  :VirtualObject
+  :GovernancePrinciple
+  (ObjectSomeValuesFrom :establishesSovereignty :UserAutonomy)
+  (ObjectSomeValuesFrom :ensuresDecentralization :DistributedAuthority)
+  (ObjectSomeValuesFrom :providesCryptographicOwnership :BlockchainRights)))
+  (SubClassOf :OwnershipFreedomDistributed :VirtualObject)
+  (SubClassOf :OwnershipFreedomDistributed :TrustAndGovernanceDomain)
+  (SubClassOf :OwnershipFreedomDistributed :VirtualEconomyDomain)
+  (SubClassOf :OwnershipFreedomDistributed :ApplicationLayer)
+  (SubClassOf :OwnershipFreedomDistributed :GovernancePrinciple)
+  (SubClassOf :OwnershipFreedomDistributed :RightsFramework)
+  (SubClassOf :OwnershipFreedomDistributed
+  (ObjectSomeValuesFrom :establishesSovereignty :SelfSovereignty))
+  (SubClassOf :OwnershipFreedomDistributed
+  (ObjectSomeValuesFrom :ensuresDecentralization :DistributedControl))
+  (SubClassOf :OwnershipFreedomDistributed
+  (ObjectSomeValuesFrom :providesCryptographicOwnership :ProvableRights))
+  (SubClassOf :OwnershipFreedomDistributed
+  (ObjectSomeValuesFrom :enablesSelfCustody :DirectAssetControl))
+  (SubClassOf :OwnershipFreedomDistributed
+  (ObjectSomeValuesFrom :guaranteesCensorshipResistance :UnrestrictedAccess))
+  (SubClassOf :OwnershipFreedomDistributed
+  (ObjectSomeValuesFrom :implementsDAOGovernance :CollectiveDecisionMaking))
+  (SubClassOf :OwnershipFreedomDistributed
+  (ObjectSomeValuesFrom :enablesDataPortability :UserControlledMigration))
+  (SubClassOf :OwnershipFreedomDistributed
+  (ObjectSomeValuesFrom :supportsInteroperability :CrossPlatformRights))
+  (SubClassOf :OwnershipFreedomDistributed
+  (ObjectSomeValuesFrom :implementsSelfSovereignIdentity :DecentralizedIdentity))
+  (SubClassOf :OwnershipFreedomDistributed
+  (ObjectSomeValuesFrom :enforcesUserRights :CryptographicProof))
+  (DisjointClasses :OwnershipFreedomDistributed :CentralizedOwnership)
+  (DisjointClasses :OwnershipFreedomDistributed :PlatformMediation)
+  (DisjointClasses :OwnershipFreedomDistributed :IntermediaryControl)
+  (FunctionalObjectProperty :establishesSovereignty)
+  (ObjectPropertyDomain :providesCryptographicOwnership :OwnershipFreedomDistributed)
+  (ObjectPropertyRange :enablesSelfCustody :AutonomousControl)
+  (TransitiveObjectProperty :ensuresDecentralization)
+  (SymmetricObjectProperty :sharesGovernanceRights)
+  (IrreflexiveObjectProperty :dependsOnCentralAuthority)
+  (SubClassOf :OwnershipFreedomDistributed
+  (ObjectMinCardinality 1 :providesCryptographicOwnership :BlockchainProof))
+  (SubClassOf :OwnershipFreedomDistributed
+  (ObjectMinCardinality 1 :implementsDAOGovernance :DecentralizedGovernanceMechanism))
+  (SubClassOf :OwnershipFreedomDistributed
+  (ObjectIntersectionOf
+  (ObjectSomeValuesFrom :implements :SelfSovereigntyPrinciple)
+  (ObjectSomeValuesFrom :enables :UserEmpowerment)
+  (ObjectSomeValuesFrom :requires :CryptographicInfrastructure)
+  (ObjectAllValuesFrom :conflictsWith :CentralizedControl)))
+  (DataPropertyAssertion :governanceModel :OwnershipFreedomDistributed "DAO,Liquid Democracy,Token Voting"^^xsd:string)
+  (DataPropertyAssertion :ownershipMechanism :OwnershipFreedomDistributed "NFT,DID,Smart Contract,Private Key"^^xsd:string)
+  (DataPropertyAssertion :standardsCompliance :OwnershipFreedomDistributed "W3C DID,GDPR,EIP-721,Solid"^^xsd:string)
+  (DataPropertyAssertion :censorshipResistance :OwnershipFreedomDistributed "High"^^xsd:string)
+  (SubClassOf :OwnershipFreedomDistributed
+  (ObjectIntersectionOf
+  (ObjectSomeValuesFrom :grantsRight :DataOwnership)
+  (ObjectSomeValuesFrom :grantsRight :AssetControl)
+  (ObjectSomeValuesFrom :grantsRight :GovernanceParticipation)
+  (ObjectSomeValuesFrom :grantsRight :PlatformMigration)))
+
+  {:query [:find (pull ?p [*])
+  :where
+  [?p :block/properties ?props]
+  [(get ?props :domain) ?d]
+  [(clojure.string/includes? ?d "Infrastructure / Immersive")]]
+  }
+
+  SubClassOf(metaverse:ResilienceMetric metaverse:VirtualObject)
+  SubClassOf(metaverse:ResilienceMetric metaverse:InfrastructureDomain)
+  SubClassOf(metaverse:ResilienceMetric metaverse:MiddlewareLayer)
+  SubClassOf(metaverse:ResilienceMetric metaverse:AvailabilityMeasurement)
+  SubClassOf(metaverse:ResilienceMetric metaverse:RecoveryTimeMeasurement)
+  SubClassOf(metaverse:ResilienceMetric metaverse:FaultToleranceIndicator)
+  SubClassOf(metaverse:ResilienceMetric metaverse:RedundancyLevel)
+  SubClassOf(metaverse:ResilienceMetric metaverse:ReliabilityScore)
+  SubClassOf(metaverse:ResilienceMetric metaverse:RobustnessIndicator)
+  SubClassOf(metaverse:ResilienceMetric metaverse:AdaptabilityMeasure)
+  SubClassOf(metaverse:ResilienceMetric metaverse:PerformanceUnderStress)
+  SubClassOf(metaverse:ResilienceMetric metaverse:GracefulDegradation)
+  SubClassOf(metaverse:ResilienceMetric metaverse:DisasterRecoveryReadiness)
+  SubClassOf(metaverse:ResilienceMetric metaverse:SLAComplianceIndicator)
+  SubClassOf(metaverse:ResilienceMetric metaverse:ISO25010Aligned)
+
+  {:query [:find (pull ?p [*])
+  :where
+  [?p :block/properties ?props]
+  [(get ?props :domain) ?d]
+  [(clojure.string/includes? ?d "Virtual Society")]]
+  }
+
+  {:query [:find (pull ?p [*])
+  :where
+  [?p :block/properties ?props]
+  [(get ?props :domain) ?d]
+  [(clojure.string/includes? ?d "Infrastructure / Security")]]
+  }
+
+  {:query [:find (pull ?p [*])
+  :where
+  [?p :block/properties ?props]
+  [(get ?props :domain) ?d]
+  [(clojure.string/includes? ?d "Infrastructure")]]
+  }
+
+  {:query [:find (pull ?p [*])
+  :where
+  [?p :block/properties ?props]
+  [(get ?props :domain) ?d]
+  [(clojure.string/includes? ?d "Infrastructure / Governance")]]
+  }
+
+  {:query [:find (pull ?p [*])
+  :where
+  [?p :block/properties ?props]
+  [(get ?props :domain) ?d]
+  [(clojure.string/includes? ?d "Reality Capture")]]
+  }
+
+  {:query [:find (pull ?p [*])
+  :where
+  [?p :block/properties ?props]
+  [(get ?props :domain) ?d]
+  [(clojure.string/includes? ?d "Interoperability / Creative")]]
+  }
+
+  Declaration(Class(mv:[ClassName]))
+  SubClassOf(mv:[ClassName] mv:[Physicality]Entity)
+  SubClassOf(mv:[ClassName] mv:[Role])
+
+  SubClassOf(mv:Avatar
+  ObjectExactCardinality(1 mv:represents mv:Agent)
+  )
+  SubClassOf(mv:DigitalTwin
+  ObjectSomeValuesFrom(mv:synchronizesWith mv:PhysicalEntity)
+  )
+)

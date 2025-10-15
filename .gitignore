@@ -6,7 +6,6 @@ logseq-owl-extractor/Cargo.lock
 *.ofn
 *.jar
 *.rdf
-*.ttl
 
 # Editor files
 .vscode/

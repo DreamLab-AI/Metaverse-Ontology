@@ -87,8 +87,16 @@ fn extract_owl_blocks(content: &str) -> Result<Vec<String>> {
         let line = lines[i].trim();
 
         // Check for code fence containing owl:functional-syntax or clojure
-        if line.starts_with("```") {
-            let fence_line = line.trim();
+        // Handle both direct fences and Logseq bullet fences (- ```clojure)
+        let fence_match = if line.starts_with("```") {
+            Some(line)
+        } else if line.starts_with("- ```") {
+            Some(&line[2..])  // Skip "- " prefix
+        } else {
+            None
+        };
+
+        if let Some(fence_line) = fence_match {
             let language = fence_line.trim_start_matches("```").trim();
 
             // Check if it's a clojure fence (OWL Functional Syntax)

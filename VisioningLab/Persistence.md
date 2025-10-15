@@ -15,27 +15,27 @@ Unlike simple data storage, Persistence provides durable state management across
 ;; OWL Functional Syntax - Persistence Process Axioms
 
 ;; Core Classification
-SubClassOf(mv:Persistence metaverse:VirtualProcess)
-SubClassOf(mv:Persistence metaverse:InfrastructureDomain)
-SubClassOf(mv:Persistence metaverse:MiddlewareLayer)
+SubClassOf(mv:Persistence mv:VirtualProcess)
+SubClassOf(mv:Persistence mv:InfrastructureDomain)
+SubClassOf(mv:Persistence mv:MiddlewareLayer)
 
 ;; Process Characteristics
-SubClassOf(mv:Persistence metaverse:StatefulProcess)
-SubClassOf(mv:Persistence metaverse:ContinuityMechanism)
-SubClassOf(mv:Persistence metaverse:DataRetentionCapability)
+SubClassOf(mv:Persistence mv:StatefulProcess)
+SubClassOf(mv:Persistence mv:ContinuityMechanism)
+SubClassOf(mv:Persistence mv:DataRetentionCapability)
 
 ;; Technical Properties
-SubClassOf(mv:Persistence metaverse:DurabilityGuarantee)
-SubClassOf(mv:Persistence metaverse:ConsistencyProtocol)
-SubClassOf(mv:Persistence metaverse:RecoveryMechanism)
+SubClassOf(mv:Persistence mv:DurabilityGuarantee)
+SubClassOf(mv:Persistence mv:ConsistencyProtocol)
+SubClassOf(mv:Persistence mv:RecoveryMechanism)
 
 ;; Distributed Aspects
-SubClassOf(mv:Persistence metaverse:DistributedStateManagement)
-SubClassOf(mv:Persistence metaverse:EventualConsistency)
-SubClassOf(mv:Persistence metaverse:ReplicationStrategy)
+SubClassOf(mv:Persistence mv:DistributedStateManagement)
+SubClassOf(mv:Persistence mv:EventualConsistency)
+SubClassOf(mv:Persistence mv:ReplicationStrategy)
 
 ;; Integration Points
-SubClassOf(mv:Persistence metaverse:SessionManagement)
+SubClassOf(mv:Persistence mv:SessionManagement)
 ```
 
 </details>

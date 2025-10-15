@@ -86,39 +86,61 @@ fn extract_owl_blocks(content: &str) -> Result<Vec<String>> {
     while i < lines.len() {
         let line = lines[i].trim();
 
-        // Check for code fence containing owl:functional-syntax
+        // Check for code fence containing owl:functional-syntax or clojure
         if line.starts_with("```") {
-            i += 1;
-            if i >= lines.len() {
-                break;
-            }
+            let fence_line = line.trim();
+            let language = fence_line.trim_start_matches("```").trim();
 
-            // Check if the next line has owl:functional-syntax marker
-            if lines[i].trim().starts_with("owl:functional-syntax::") {
-                // Check for pipe character
-                if !lines[i].trim().ends_with('|') {
-                    i += 1;
-                    continue;
-                }
-
+            // Check if it's a clojure fence (OWL Functional Syntax)
+            if language == "clojure" || language.is_empty() {
                 i += 1;
-
-                // Extract until closing ```
-                let mut block_lines = Vec::new();
-                while i < lines.len() {
-                    let current_line = lines[i];
-                    if current_line.trim().starts_with("```") {
-                        break;
-                    }
-                    // Preserve indentation inside code fence
-                    if !current_line.trim().is_empty() {
-                        block_lines.push(current_line.trim_start());
-                    }
-                    i += 1;
+                if i >= lines.len() {
+                    break;
                 }
 
-                if !block_lines.is_empty() {
-                    blocks.push(block_lines.join("\n"));
+                // For clojure fences, treat entire content as OWL
+                // For empty fences, check if next line has owl:functional-syntax marker
+                let should_extract = if language == "clojure" {
+                    true
+                } else if lines[i].trim().starts_with("owl:functional-syntax::") {
+                    // Skip the owl:functional-syntax:: line if present
+                    i += 1;
+                    true
+                } else {
+                    false
+                };
+
+                if should_extract {
+                    // Extract until closing ```
+                    let mut block_lines = Vec::new();
+                    while i < lines.len() {
+                        let current_line = lines[i];
+                        if current_line.trim().starts_with("```") {
+                            break;
+                        }
+                        // Filter out Clojure-style comments and preserve code
+                        let trimmed = current_line.trim_start();
+                        if !trimmed.is_empty()
+                            && !trimmed.starts_with(";;")
+                            && !trimmed.starts_with("#")
+                            && trimmed != "|" {
+                            block_lines.push(trimmed);
+                        }
+                        i += 1;
+                    }
+
+                    // Only add if the block contains OWL syntax
+                    let block_text = block_lines.join("\n");
+                    let is_owl = block_text.contains("Declaration(")
+                        || block_text.contains("SubClassOf(")
+                        || block_text.contains("EquivalentClasses(")
+                        || block_text.contains("DisjointClasses(")
+                        || block_text.contains("ObjectProperty(")
+                        || block_text.contains("DataProperty(");
+
+                    if is_owl && !block_lines.is_empty() {
+                        blocks.push(block_text);
+                    }
                 }
             }
             i += 1;

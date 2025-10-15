@@ -1,6 +1,5 @@
 use anyhow::{Context, Result};
 use clap::Parser;
-use std::collections::HashMap;
 use std::fs;
 use std::path::{Path, PathBuf};
 use walkdir::WalkDir;
@@ -9,7 +8,6 @@ mod parser;
 mod converter;
 mod assembler;
 
-use parser::LogseqPage;
 use assembler::OntologyAssembler;
 
 /// Logseq OWL Extractor - Extracts OWL Functional Syntax from Logseq markdown files

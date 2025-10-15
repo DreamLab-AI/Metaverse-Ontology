@@ -93,9 +93,9 @@ impl OntologyAssembler {
 
         // Try to parse with horned-functional
         match from_str::<SetOntology, _>(&ontology_text) {
-            Ok((ontology, _prefixes)) => {
+            Ok((_ontology, _prefixes)) => {
                 println!("  ✓ Parsed successfully");
-                println!("  ✓ Ontology contains {} axioms", ontology.i().count());
+                println!("  ✓ OWL Functional Syntax is valid");
 
                 // Basic consistency checks
                 // Note: For full reasoning, you'd need to integrate with whelk or another reasoner

@@ -15,29 +15,29 @@ Unlike simple uptime percentages, Resilience Metrics provide multi-dimensional a
 ;; OWL Functional Syntax - Resilience Metric Axioms
 
 ;; Core Classification
-SubClassOf(mv:ResilienceMetric metaverse:VirtualObject)
-SubClassOf(mv:ResilienceMetric metaverse:InfrastructureDomain)
-SubClassOf(mv:ResilienceMetric metaverse:MiddlewareLayer)
+SubClassOf(mv:ResilienceMetric mv:VirtualObject)
+SubClassOf(mv:ResilienceMetric mv:InfrastructureDomain)
+SubClassOf(mv:ResilienceMetric mv:MiddlewareLayer)
 
 ;; Metric Categories
-SubClassOf(mv:ResilienceMetric metaverse:AvailabilityMeasurement)
-SubClassOf(mv:ResilienceMetric metaverse:RecoveryTimeMeasurement)
-SubClassOf(mv:ResilienceMetric metaverse:FaultToleranceIndicator)
-SubClassOf(mv:ResilienceMetric metaverse:RedundancyLevel)
+SubClassOf(mv:ResilienceMetric mv:AvailabilityMeasurement)
+SubClassOf(mv:ResilienceMetric mv:RecoveryTimeMeasurement)
+SubClassOf(mv:ResilienceMetric mv:FaultToleranceIndicator)
+SubClassOf(mv:ResilienceMetric mv:RedundancyLevel)
 
 ;; Quality Attributes
-SubClassOf(mv:ResilienceMetric metaverse:ReliabilityScore)
-SubClassOf(mv:ResilienceMetric metaverse:RobustnessIndicator)
-SubClassOf(mv:ResilienceMetric metaverse:AdaptabilityMeasure)
+SubClassOf(mv:ResilienceMetric mv:ReliabilityScore)
+SubClassOf(mv:ResilienceMetric mv:RobustnessIndicator)
+SubClassOf(mv:ResilienceMetric mv:AdaptabilityMeasure)
 
 ;; Operational Aspects
-SubClassOf(mv:ResilienceMetric metaverse:PerformanceUnderStress)
-SubClassOf(mv:ResilienceMetric metaverse:GracefulDegradation)
-SubClassOf(mv:ResilienceMetric metaverse:DisasterRecoveryReadiness)
+SubClassOf(mv:ResilienceMetric mv:PerformanceUnderStress)
+SubClassOf(mv:ResilienceMetric mv:GracefulDegradation)
+SubClassOf(mv:ResilienceMetric mv:DisasterRecoveryReadiness)
 
 ;; Standards Integration
-SubClassOf(mv:ResilienceMetric metaverse:SLAComplianceIndicator)
-SubClassOf(mv:ResilienceMetric metaverse:ISO25010Aligned)
+SubClassOf(mv:ResilienceMetric mv:SLAComplianceIndicator)
+SubClassOf(mv:ResilienceMetric mv:ISO25010Aligned)
 ```
 
 </details>

@@ -371,13 +371,17 @@ See [docs/reference/TEMPLATE.md](docs/reference/TEMPLATE.md) for full validation
 - [whelk-rs](https://github.com/balhoff/whelk) - Fast OWL 2 EL reasoner in Rust
 - [ROBOT](https://github.com/ontodev/robot) - OWL tool for command line
 
-## 📄 License
+---
 
-MIT or Apache 2.0 (choose one based on your requirements)
+## 📄 Licence
+
+This project is licensed under the Mozilla Public Licence 2.0. See the [LICENSE](LICENSE) file for details.
+
+---
 
 ## 👥 Authors
 
-Metaverse Ontology Working Group
+VisioningLab and DreamLab - AI Ltd.
 
 ## 🙏 Acknowledgments
 
@@ -400,3 +404,4 @@ Metaverse Ontology Working Group
 - [Architecture Details](docs/SOLUTION_ARCHITECTURE_STRATEGY.md) - Technical design
 
 ---
+

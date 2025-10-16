@@ -6,7 +6,7 @@
 	- preferred-term:: Middleware
 	- definition:: Software layer that mediates between applications and underlying services or infrastructure to enable communication, resource access, and interoperability.
 	- maturity:: mature
-	- source:: [[Invirt/MSF Taxonomy]], [[ISO/IEC 30170]], [[ETSI GR ARF 010]]
+	- source:: [[EWG/MSF Taxonomy]], [[ISO/IEC 30170]], [[ETSI GR ARF 010]]
 	- owl:class:: mv:Middleware
 	- owl:physicality:: VirtualEntity
 	- owl:role:: Object
@@ -224,7 +224,7 @@
 	-
 	- ### Standards and References
 	  id:: middleware-standards
-		- [[Invirt/MSF Taxonomy]] - Metaverse Standards Forum taxonomy
+		- [[EWG/MSF Taxonomy]] - Metaverse Standards Forum taxonomy
 		- [[ISO/IEC 30170]] - Ruby programming language (middleware frameworks)
 		- [[ETSI GR ARF 010]] - ETSI AR Framework
 		- AMQP (Advanced Message Queuing Protocol) - ISO/IEC 19464

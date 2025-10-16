@@ -6,7 +6,7 @@
 	- preferred-term:: Spatial Index
 	- definition:: Data structure optimized for efficient storage, retrieval, and querying of 3D spatial objects within virtual worlds using hierarchical geometric partitioning.
 	- maturity:: mature
-	- source:: [[Invirt/MSF taxonomy]]
+	- source:: [[EWG/MSF taxonomy]]
 	- owl:class:: mv:SpatialIndex
 	- owl:physicality:: VirtualEntity
 	- owl:role:: Object
@@ -132,7 +132,7 @@
 	- ### Standards & References
 	  id:: spatialindex-standards
 		- [[ISO 19112]] - Spatial referencing by geographic identifiers
-		- [[Invirt/MSF Taxonomy]] - Metaverse Standards Forum spatial computing taxonomy
+		- [[EWG/MSF Taxonomy]] - Metaverse Standards Forum spatial computing taxonomy
 		- [[PostGIS]] - Spatial database extension for PostgreSQL using R-tree/GiST indexes
 		- [[OGC Simple Features]] - Open Geospatial Consortium standard for geometric operations
 		- [[CGAL]] - Computational Geometry Algorithms Library with spatial index implementations

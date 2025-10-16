@@ -6,7 +6,7 @@
 	- preferred-term:: Context Awareness
 	- definition:: The capability of computing systems to sense, interpret, and respond to environmental conditions, user state, situational factors, and contextual information to dynamically adapt behavior and deliver personalized experiences.
 	- maturity:: mature
-	- source:: [[Invirt/MSF Taxonomy]], [[IEEE P2048-3]], [[ISO/IEC 30141]]
+	- source:: [[EWG/MSF Taxonomy]], [[IEEE P2048-3]], [[ISO/IEC 30141]]
 	- owl:class:: mv:ContextAwareness
 	- owl:physicality:: VirtualEntity
 	- owl:role:: Process
@@ -134,7 +134,7 @@
 		- **Augmented Reality**: Overlay contextually relevant information on physical environments
 	- ### Standards & References
 	  id:: context-awareness-standards
-		- [[Invirt/MSF Taxonomy]] - Metaverse system framework context modeling
+		- [[EWG/MSF Taxonomy]] - Metaverse system framework context modeling
 		- [[IEEE P2048-3]] - Virtual world object representation and contextual metadata
 		- [[ISO/IEC 30141]] - Internet of Things reference architecture for context-aware systems
 		- [[W3C Semantic Sensor Network Ontology]] - Semantic modeling of sensor and context data

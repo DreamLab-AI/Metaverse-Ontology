@@ -6,7 +6,7 @@
 	- preferred-term:: Content Delivery Network (CDN)
 	- definition:: A geographically distributed network of proxy servers and data centers designed to provide high availability, high performance, and low latency content delivery by caching content closer to end-users.
 	- maturity:: mature
-	- source:: [[Invirt/MSF taxonomy]], [[ETSI GR ARF 010]]
+	- source:: [[EWG/MSF taxonomy]], [[ETSI GR ARF 010]]
 	- owl:class:: mv:ContentDeliveryNetwork
 	- owl:physicality:: PhysicalEntity
 	- owl:role:: Object
@@ -125,7 +125,7 @@
 		- [[ETSI GR ARF 010]] - ETSI Metaverse Architecture Framework, Section 5.2 on networking infrastructure
 		- [[ISO/IEC 17826]] - Information technology standards for distributed systems architecture
 		- [[RFC 7871]] - IETF Client Subnet in DNS Queries for CDN optimization
-		- [[Invirt/MSF Taxonomy]] - Metaverse Standards Forum infrastructure taxonomy
+		- [[EWG/MSF Taxonomy]] - Metaverse Standards Forum infrastructure taxonomy
 		- [[W3C Service Workers]] - Web standard for offline-first and edge caching strategies
 		- Industry Implementations: Akamai, Cloudflare, Amazon CloudFront, Fastly, Azure CDN
 	-

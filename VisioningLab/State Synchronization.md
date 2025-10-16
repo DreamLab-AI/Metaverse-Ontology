@@ -6,7 +6,7 @@
 	- preferred-term:: State Synchronization
 	- definition:: The process of maintaining consistent, coherent representations of virtual world state across distributed clients, servers, and edge nodes through continuous replication, conflict resolution, and consistency protocols.
 	- maturity:: mature
-	- source:: [[Invirt/MSF taxonomy]], [[ETSI GR ARF 010]], [[ISO/IEC 23247]]
+	- source:: [[EWG/MSF taxonomy]], [[ETSI GR ARF 010]], [[ISO/IEC 23247]]
 	- owl:class:: mv:StateSynchronization
 	- owl:physicality:: VirtualEntity
 	- owl:role:: Process
@@ -131,7 +131,7 @@
 		- **Cross-Platform Sessions**: Maintaining consistent state across heterogeneous clients (VR, desktop, mobile) with different capabilities
 	- ### Standards & References
 	  id:: state-synchronization-standards
-		- [[Invirt/MSF taxonomy]] - Metaverse standards forum taxonomy including synchronization concepts
+		- [[EWG/MSF taxonomy]] - Metaverse standards forum taxonomy including synchronization concepts
 		- [[ETSI GR ARF 010]] - ETSI metaverse architecture framework including distributed systems
 		- [[ISO/IEC 23247]] - Digital twin framework including state synchronization patterns
 		- [[IEEE 1516]] - High Level Architecture (HLA) for distributed simulation

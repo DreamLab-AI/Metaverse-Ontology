@@ -6,7 +6,7 @@
 	- preferred-term:: Service Layer
 	- definition:: Collection of reusable services exposed via APIs for identity, assets, physics, and analytics that enable application functionality and interoperability in virtual environments.
 	- maturity:: mature
-	- source:: [[Invirt/MSF Taxonomy]]
+	- source:: [[EWG/MSF Taxonomy]]
 	- owl:class:: mv:ServiceLayer
 	- owl:physicality:: VirtualEntity
 	- owl:role:: Object
@@ -105,7 +105,7 @@
 	- ### Standards & References
 	  id:: service-layer-standards
 		- [[IEEE P2048-1]] - Virtual reality and augmented reality interoperability standards
-		- [[Invirt/MSF Taxonomy]] - Metaverse Standards Forum service layer taxonomy
+		- [[EWG/MSF Taxonomy]] - Metaverse Standards Forum service layer taxonomy
 		- [[OpenAPI Specification]] - Standard for RESTful API documentation and design
 		- [[gRPC]] - High-performance RPC framework for service communication
 		- [[GraphQL]] - Query language and runtime for flexible API interactions

@@ -128,7 +128,7 @@
 		- [[ARCore Cloud Anchors]] - Google's cloud-based anchor persistence system
 		- [[Azure Spatial Anchors]] - Microsoft's cross-platform anchor sharing service
 		- [[OpenXR Spatial Anchor Extension]] - Khronos standard for anchor API
-		- [[Invirt/MSF Taxonomy]] - Metaverse Standards Forum spatial computing definitions
+		- [[EWG/MSF Taxonomy]] - Metaverse Standards Forum spatial computing definitions
 	- ### Related Concepts
 	  id:: spatial-anchor-related
 		- [[SLAM]] - Simultaneous Localization and Mapping provides anchor tracking foundation

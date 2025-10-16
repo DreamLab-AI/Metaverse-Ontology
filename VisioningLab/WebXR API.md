@@ -5,7 +5,7 @@ term-id:: 20104
 preferred-term:: WebXR API
 definition:: web interface enabling rendering and input for AR/VR experiences in browsers.
 maturity:: 3
-source:: [[Invirt/MSF taxonomy]]
+source:: [[EWG/MSF taxonomy]]
 
 ## Classification
 domain:: [[ETSI Domain/Interoperability]]
@@ -13,17 +13,17 @@ layer:: [[IV) Data Layer]]
 aspect:: [[Instantiation: Software/API]]
 
 ## Ontological Relationships
-is-a:: 
-has-part:: 
-requires:: 
-enables:: 
-related-to:: 
+is-a::
+has-part::
+requires::
+enables::
+related-to::
 
 ## Terminology
 synonyms:: [[Data interface; integration protocol]]
 
 ## Sources & References
-additional-sources:: W3C WebXR · Invirt/MSF Taxonomy · ETSI GR ARF 010
+additional-sources:: W3C WebXR · EWG/MSF Taxonomy · ETSI GR ARF 010
 
 ## Notes
 Defines communication rules and exchange methods between digital systems to ensure interoperability.

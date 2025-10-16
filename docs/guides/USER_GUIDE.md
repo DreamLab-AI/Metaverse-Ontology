@@ -256,7 +256,7 @@ Now the SPARQL endpoint is available at `http://localhost:3030/metaverse/query`.
 #### Query 1: List All Classes
 
 ```sparql
-PREFIX mv: <http://www.metaverse-ontology.org/mv#>
+PREFIX mv: <http://www.visioninglab.com/mv#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 
 SELECT ?class ?label
@@ -272,7 +272,7 @@ ORDER BY ?class
 #### Query 2: Find All Virtual Agents
 
 ```sparql
-PREFIX mv: <http://www.metaverse-ontology.org/mv#>
+PREFIX mv: <http://www.visioninglab.com/mv#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 SELECT ?agent ?label ?definition
@@ -288,7 +288,7 @@ WHERE {
 #### Query 3: Get Concepts by ETSI Domain
 
 ```sparql
-PREFIX mv: <http://www.metaverse-ontology.org/mv#>
+PREFIX mv: <http://www.visioninglab.com/mv#>
 
 SELECT ?concept ?domain
 WHERE {
@@ -304,7 +304,7 @@ WHERE {
 #### Pattern 1: Find All Parts of a Concept
 
 ```sparql
-PREFIX mv: <http://www.metaverse-ontology.org/mv#>
+PREFIX mv: <http://www.visioninglab.com/mv#>
 
 SELECT ?concept ?part
 WHERE {
@@ -317,7 +317,7 @@ WHERE {
 #### Pattern 2: Find Dependencies
 
 ```sparql
-PREFIX mv: <http://www.metaverse-ontology.org/mv#>
+PREFIX mv: <http://www.visioninglab.com/mv#>
 
 SELECT ?concept ?dependency
 WHERE {
@@ -330,7 +330,7 @@ WHERE {
 #### Pattern 3: Find Enabled Capabilities
 
 ```sparql
-PREFIX mv: <http://www.metaverse-ontology.org/mv#>
+PREFIX mv: <http://www.visioninglab.com/mv#>
 
 SELECT ?concept ?capability
 WHERE {
@@ -343,7 +343,7 @@ WHERE {
 #### Pattern 4: Physicality-Based Filtering
 
 ```sparql
-PREFIX mv: <http://www.metaverse-ontology.org/mv#>
+PREFIX mv: <http://www.visioninglab.com/mv#>
 
 SELECT ?concept
 WHERE {
@@ -356,7 +356,7 @@ WHERE {
 #### Pattern 5: Role-Based Filtering
 
 ```sparql
-PREFIX mv: <http://www.metaverse-ontology.org/mv#>
+PREFIX mv: <http://www.visioninglab.com/mv#>
 
 SELECT ?concept
 WHERE {
@@ -371,7 +371,7 @@ WHERE {
 Enable reasoning to infer implicit relationships:
 
 ```sparql
-PREFIX mv: <http://www.metaverse-ontology.org/mv#>
+PREFIX mv: <http://www.visioninglab.com/mv#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 
 # With reasoning enabled, this query will also return
@@ -406,12 +406,12 @@ g = Graph()
 g.parse("/home/john/githubs/OntologyDesign/metaverse-ontology.ttl", format="turtle")
 
 # Define namespace
-MV = Namespace("http://www.metaverse-ontology.org/mv#")
+MV = Namespace("http://www.visioninglab.com/mv#")
 g.bind("mv", MV)
 
 # Query: Find all Virtual Agents
 query = """
-    PREFIX mv: <http://www.metaverse-ontology.org/mv#>
+    PREFIX mv: <http://www.visioninglab.com/mv#>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
     SELECT ?agent ?label
@@ -453,7 +453,7 @@ print(f"Avatar is a VirtualAgent: {is_virtual_agent}")
 ```python
 # Extract all concepts in InteractionDomain
 interaction_query = """
-    PREFIX mv: <http://www.metaverse-ontology.org/mv#>
+    PREFIX mv: <http://www.visioninglab.com/mv#>
 
     CONSTRUCT {
         ?concept ?p ?o
@@ -499,7 +499,7 @@ quadStream.on('end', () => {
   console.log(`Loaded ${dataset.size} triples`);
 
   // Query: Find all VirtualAgent subclasses
-  const MV = rdf.namespace('http://www.metaverse-ontology.org/mv#');
+  const MV = rdf.namespace('http://www.visioninglab.com/mv#');
   const RDFS = rdf.namespace('http://www.w3.org/2000/01/rdf-schema#');
 
   const virtualAgents = dataset.match(null, RDFS.subClassOf, MV.VirtualAgent);
@@ -524,7 +524,7 @@ const { Parser } = require('sparqljs');
 // Parse SPARQL query
 const parser = new Parser();
 const query = `
-  PREFIX mv: <http://www.metaverse-ontology.org/mv#>
+  PREFIX mv: <http://www.visioninglab.com/mv#>
   SELECT ?agent WHERE {
     ?agent rdfs:subClassOf mv:VirtualAgent .
   }
@@ -578,7 +578,7 @@ public class MetaverseOntologyExample {
         System.out.println("Loaded " + model.size() + " triples");
 
         // Define namespace
-        String mvNS = "http://www.metaverse-ontology.org/mv#";
+        String mvNS = "http://www.visioninglab.com/mv#";
 
         // SPARQL Query: Find all Virtual Agents
         String queryString =
@@ -640,7 +640,7 @@ public class MetaverseReasoning {
         }
 
         // Query inferred classes
-        String mvNS = "http://www.metaverse-ontology.org/mv#";
+        String mvNS = "http://www.visioninglab.com/mv#";
         Resource virtualAgent = infModel.getResource(mvNS + "VirtualAgent");
 
         StmtIterator iter = infModel.listStatements(null, RDFS.subClassOf, virtualAgent);
@@ -762,7 +762,7 @@ Concepts are classified into **7 ETSI metaverse domains**:
 1. **Identify Required Concepts**:
    ```sparql
    # Find all relevant concepts in InteractionDomain
-   PREFIX mv: <http://www.metaverse-ontology.org/mv#>
+   PREFIX mv: <http://www.visioninglab.com/mv#>
 
    SELECT ?concept ?definition
    WHERE {
@@ -786,7 +786,7 @@ Concepts are classified into **7 ETSI metaverse domains**:
 
    # Create application graph
    app = Graph()
-   MV = Namespace("http://www.metaverse-ontology.org/mv#")
+   MV = Namespace("http://www.visioninglab.com/mv#")
    APP = Namespace("http://myapp.example.com/")
 
    # Define a user
@@ -829,7 +829,7 @@ Concepts are classified into **7 ETSI metaverse domains**:
 2. **Run Validation Queries**:
    ```sparql
    # Check: All Avatars must represent exactly one Agent
-   PREFIX mv: <http://www.metaverse-ontology.org/mv#>
+   PREFIX mv: <http://www.visioninglab.com/mv#>
 
    SELECT ?avatar (COUNT(?agent) AS ?count)
    WHERE {
@@ -860,7 +860,7 @@ Concepts are classified into **7 ETSI metaverse domains**:
 
 1. **Count Concepts by Domain**:
    ```sparql
-   PREFIX mv: <http://www.metaverse-ontology.org/mv#>
+   PREFIX mv: <http://www.visioninglab.com/mv#>
 
    SELECT ?domain (COUNT(?concept) AS ?count)
    WHERE {
@@ -891,7 +891,7 @@ Concepts are classified into **7 ETSI metaverse domains**:
    dep_graph = nx.DiGraph()
 
    query = """
-       PREFIX mv: <http://www.metaverse-ontology.org/mv#>
+       PREFIX mv: <http://www.visioninglab.com/mv#>
        SELECT ?concept ?dependency
        WHERE {
          ?concept mv:dependsOn ?dependency .
@@ -916,7 +916,7 @@ Concepts are classified into **7 ETSI metaverse domains**:
 
 1. **Create Extension File**:
    ```turtle
-   @prefix mv: <http://www.metaverse-ontology.org/mv#> .
+   @prefix mv: <http://www.visioninglab.com/mv#> .
    @prefix myext: <http://mycompany.com/metaverse-extension#> .
    @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
    @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -942,7 +942,7 @@ Concepts are classified into **7 ETSI metaverse domains**:
 
    # Now query including your extensions
    query = """
-       PREFIX mv: <http://www.metaverse-ontology.org/mv#>
+       PREFIX mv: <http://www.visioninglab.com/mv#>
        PREFIX myext: <http://mycompany.com/metaverse-extension#>
 
        SELECT ?concept
@@ -993,7 +993,7 @@ Concepts are classified into **7 ETSI metaverse domains**:
 1. **Check namespace prefixes**:
    ```sparql
    # Ensure you're using the correct namespace
-   PREFIX mv: <http://www.metaverse-ontology.org/mv#>
+   PREFIX mv: <http://www.visioninglab.com/mv#>
    ```
 
 2. **Verify ontology is loaded**:

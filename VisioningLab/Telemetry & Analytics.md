@@ -6,7 +6,7 @@
 	- preferred-term:: Telemetry & Analytics
 	- definition:: Systematic collection and analysis of usage and performance data from metaverse applications and platforms to enable monitoring, optimization, and decision-making.
 	- maturity:: mature
-	- source:: [[Invirt/MSF Taxonomy]]
+	- source:: [[EWG/MSF Taxonomy]]
 	- owl:class:: mv:TelemetryAnalytics
 	- owl:physicality:: VirtualEntity
 	- owl:role:: Process
@@ -108,7 +108,7 @@
 		- **Economic Analysis**: Tracking virtual economy metrics including transaction volumes, asset valuations, and marketplace dynamics
 	- ### Standards & References
 	  id:: telemetry-analytics-standards
-		- [[Invirt/MSF Taxonomy]] - Metaverse Standards Forum taxonomy for data management and analytics
+		- [[EWG/MSF Taxonomy]] - Metaverse Standards Forum taxonomy for data management and analytics
 		- [[ISO/IEC 30141]] - Internet of Things reference architecture applicable to virtual world telemetry
 		- [[IEEE P2048-9]] - Standards for metaverse data management and analytics frameworks
 		- [[OpenTelemetry]] - Open-source observability framework for distributed systems

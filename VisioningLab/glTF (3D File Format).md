@@ -6,7 +6,7 @@
 	- preferred-term:: glTF (3D File Format)
 	- definition:: A royalty-free, open-standard 3D asset transmission format developed by Khronos Group that efficiently specifies scene structure, geometry, materials, animations, and other properties for real-time rendering.
 	- maturity:: mature
-	- source:: [[Khronos Group]], [[Invirt/MSF taxonomy]]
+	- source:: [[Khronos Group]], [[EWG/MSF taxonomy]]
 	- owl:class:: mv:glTFFormat
 	- owl:physicality:: VirtualEntity
 	- owl:role:: Object

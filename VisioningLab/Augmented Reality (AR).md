@@ -121,7 +121,7 @@
 		- [[ISO 9241-940]] - Ergonomics of human-system interaction for AR/VR systems
 		- [[IEEE P2048-3]] - Virtual Reality and Augmented Reality device and system interoperability standards
 		- [[ETSI GR ARF 010]] - Augmented Reality Framework for architecture and interfaces
-		- [[Invirt/MSF Taxonomy]] - Metaverse Standards Forum AR classification
+		- [[EWG/MSF Taxonomy]] - Metaverse Standards Forum AR classification
 		- [[WebXR Device API]] - Browser-based AR experiences standard
 		- [[OpenXR]] - Cross-platform AR/VR runtime standard
 	- ### Related Concepts

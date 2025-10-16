@@ -6,7 +6,7 @@
 	- preferred-term:: Physics Engine
 	- definition:: Software component that simulates physical interactions, constraints, and dynamics in real-time for virtual environments.
 	- maturity:: mature
-	- source:: [[Invirt/MSF Taxonomy]], [[SIGGRAPH Pipeline WG]], [[ISO/IEC 23090-3]]
+	- source:: [[EWG/MSF Taxonomy]], [[SIGGRAPH Pipeline WG]], [[ISO/IEC 23090-3]]
 	- owl:class:: mv:PhysicsEngine
 	- owl:physicality:: VirtualEntity
 	- owl:role:: Object
@@ -229,7 +229,7 @@
 	-
 	- ### Standards and References
 	  id:: physics-engine-standards
-		- [[Invirt/MSF Taxonomy]] - Metaverse Standards Forum taxonomy
+		- [[EWG/MSF Taxonomy]] - Metaverse Standards Forum taxonomy
 		- [[SIGGRAPH Pipeline WG]] - Graphics pipeline working group
 		- [[ISO/IEC 23090-3]] - Scene description for MPEG media
 		- IEEE 1516 (HLA) - High-Level Architecture for simulation interoperability

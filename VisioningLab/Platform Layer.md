@@ -6,7 +6,7 @@
 	- preferred-term:: Platform Layer
 	- definition:: Architectural tier providing core platform services including identity, world state management, and asset services upon which metaverse applications are built.
 	- maturity:: mature
-	- source:: [[Invirt/MSF Taxonomy]]
+	- source:: [[EWG/MSF Taxonomy]]
 	- owl:class:: mv:PlatformLayer
 	- owl:physicality:: VirtualEntity
 	- owl:role:: Object
@@ -101,7 +101,7 @@
 		- API gateway for unified access to identity, assets, and world services
 	- ### Standards & References
 	  id:: platform-layer-standards
-		- [[Invirt/MSF Taxonomy]] - Platform architecture reference from Metaverse Standards Forum
+		- [[EWG/MSF Taxonomy]] - Platform architecture reference from Metaverse Standards Forum
 		- [[ETSI GR ARF 010]] - European Telecommunications Standards Institute metaverse framework
 		- [[W3C DID Specification]] - Decentralized Identifiers for metaverse identity
 		- [[Khronos glTF]] - Standard 3D asset format for interoperability

@@ -398,6 +398,14 @@ This project is licensed under the Mozilla Public Licence 2.0. See the [LICENSE]
 
 ---
 
+## Part of VisionFlow
+
+![VisionFlow Knowledge Management System](https://raw.githubusercontent.com/DreamLab-AI/VisionFlow/main/visionflow.gif)
+
+This ontology module is part of the VisionFlow Knowledge Management System, located at [https://github.com/DreamLab-AI/VisionFlow](https://github.com/DreamLab-AI/VisionFlow).
+
+---
+
 ## 🎉 Ready to Explore?
 
 **Visualize the Ontology:**

@@ -1,74 +1,80 @@
-# Metaverse Ontology - Hybrid Logseq + OWL Design
+# Metaverse Ontology
 
 A formal ontology for metaverse concepts using an innovative hybrid approach that combines **Logseq markdown** for human readability with **OWL Functional Syntax** for formal reasoning.
 
 ## 🌟 Key Features
 
-- **Orthogonal Classification**: Two-dimensional design (Physicality × Role) enabling automatic inference of 9 intersection classes
-- **Logseq-Native Format**: Pure outline format with collapsed blocks, queryable properties, and section IDs
-- **Automated Extraction**: Rust tool to parse Logseq files and generate complete OWL ontology
-- **OWL 2 DL Compliant**: Full support for formal reasoning and consistency checking
-- **Dual Purpose**: Human-readable in Logseq, machine-extractable for reasoners
-- **ETSI Aligned**: Domain classification based on ETSI metaverse standards
+*   **Orthogonal Classification**: A two-dimensional design (Physicality × Role) enables the automatic inference of 9 intersection classes.
+*   **Logseq-Native Format**: Concepts are defined in a pure outline format with properties, queryable tags, and collapsible blocks, making them easy to read and manage in Logseq.
+*   **Automated Extraction**: A Rust-based tool parses the Logseq markdown files and generates a complete, valid OWL ontology.
+*   **OWL 2 DL Compliant**: The generated ontology fully supports formal reasoning and consistency checking with standard OWL 2 DL tools.
+*   **ETSI Aligned**: The domain classification is based on the European Telecommunications Standards Institute (ETSI) metaverse standards.
 
-## 🖼️ Visual Overview
+## 🎨 Visualization
+
+The ontology can be explored visually using modern web-based tools that support the Turtle (.ttl) format.
 
 ![Ontology Visualization](docs/Screenshot%202025-10-15%20132107.png)
 ![Ontology Visualization](docs/Screenshot%202025-10-15%20144107.png)
 ![Ontology Visualization](docs/Screenshot%202025-10-16%20130730.png)
 ![Ontology Visualization](docs/Screenshot%202025-10-16%20130809.png)
 
+### Recommended Visualizers
+
+*   **OWL TTL Web Visualizer**: An interactive 3D force-directed graph visualizer that runs in your web browser. This tool uses Neo4j to render the ontology graph, allowing you to explore nodes and their connections dynamically. See the [Visualizer Guide](docs/visualizer-guide.md) for setup and usage instructions.
+*   **VisionFlow System**: This ontology module is a component of the broader VisionFlow Knowledge Management System, which provides advanced visualization and knowledge exploration capabilities.
+
+![VisionFlow Knowledge Management System](https://raw.githubusercontent.com/DreamLab-AI/VisionFlow/main/visionflow.gif)
+
+To use these visualizers, the ontology must first be converted from its native OWL Functional Syntax (.ofn) to the Turtle (.ttl) format.
+
 ## 📁 Project Structure
 
 ```
-OntologyDesign/
+Metaverse-Ontology/
 ├── README.md                          # This file
 │
 ├── docs/                              # 📚 Documentation
 │   ├── guides/
 │   │   ├── QUICKSTART.md             # 5-minute setup guide
-│   │   └── MIGRATION_GUIDE.md        # How to migrate concepts
+│   │   └── USER_GUIDE.md             # Guide to using the ontology
 │   ├── reference/
-│   │   ├── TEMPLATE.md               # Standard concept format template
-│   │   ├── FORMAT_STANDARDIZED.md    # Complete format specification
-│   │   ├── URIMapping.md             # Wikilink → IRI conversion rules
-│   │   └── LOGSEQ_TAG_USAGE.md       # Using metaverseOntology tag
-│   ├── IMPLEMENTATION_STATUS.md      # Feature completion status
-│   ├── MIGRATION_STATUS.md           # 260+ concept migration progress
-│   └── task.md                       # Original design requirements
+│   │   ├── TEMPLATE.md               # Template for new concepts
+│   │   └── URIMapping.md             # Rules for converting Wikilinks to IRIs
+│   └── visualizer-guide.md           # Guide for the OWL TTL Web Visualizer
 │
 ├── OntologyDefinition.md             # 🎯 Core ontology header & base classes
-├── PropertySchema.md                  # 🔗 All object/data/annotation properties
+├── PropertySchema.md                  # 🔗 All defined properties
 ├── ETSIDomainClassification.md       # 🏛️ ETSI domain taxonomy
-├── ValidationTests.md                 # ✅ Test cases for reasoning
 │
 ├── Avatar.md                          # 📘 Example: VirtualAgent class
 ├── DigitalTwin.md                     # 📗 Example: HybridObject class
 │
-├── VisioningLab/                      # 🔬 260+ concept files
-│   ├── Game Engine.md                # Example: VirtualObject class
-│   └── [...]                         # (migration in progress)
+├── *.md                              # Over 280 other concept files
 │
-└── logseq-owl-extractor/             # 🦀 Rust extraction tool
-    ├── Cargo.toml                     # Dependencies
-    ├── README.md                      # Tool documentation
-    └── src/
-        ├── main.rs                    # CLI interface
-        ├── parser.rs                  # Markdown parser
-        ├── converter.rs               # Wikilink → IRI conversion
-        └── assembler.rs               # Ontology assembly & validation
+├── logseq-owl-extractor/             # 🦀 Rust tool for OWL extraction
+│
+└── convert_owl_to_ttl.py             # 🐍 Python script for TTL conversion
 ```
 
 ## 🚀 Quick Start
+
+### Prerequisites
+*   **Rust and Cargo**: Install from [rustup.rs](https://rustup.rs/).
+*   **Python 3**: For the conversion script.
+*   **ROBOT (optional but recommended)**: A command-line tool for ontology tasks. Download it from [http://robot.obolibrary.org/](http://robot.obolibrary.org/).
 
 ### 1. Build the Extractor
 
 ```bash
 cd logseq-owl-extractor
 cargo build --release
+cd ..
 ```
 
-### 2. Extract OWL from Logseq Files
+### 2. Extract the Ontology (.ofn)
+
+This command parses all markdown files and generates a single ontology file in OWL Functional Syntax.
 
 ```bash
 ./logseq-owl-extractor/target/release/logseq-owl-extractor \
@@ -77,42 +83,37 @@ cargo build --release
   --validate
 ```
 
-### 3. View in Protégé or Use with Reasoner
+### 3. Convert to Turtle (.ttl) for Visualization
+
+Use a tool like ROBOT to convert the `.ofn` output to `.ttl`.
 
 ```bash
-# Open in Protégé (GUI)
-protege metaverse-ontology.ofn
-
-# Or classify with whelk-rs (CLI)
-whelk classify metaverse-ontology.ofn
+robot convert --input metaverse-ontology.ofn --output metaverse-ontology.ttl
 ```
+*Note: The included `convert_owl_to_ttl.py` is a basic script; ROBOT is recommended for more robust conversions.*
 
-📖 **See [docs/guides/QUICKSTART.md](docs/guides/QUICKSTART.md) for detailed instructions.**
+### 4. Visualize the Ontology
+
+Follow the instructions in the [**Visualizer Guide**](docs/visualizer-guide.md) to load your `metaverse-ontology.ttl` file into the OWL TTL Web Visualizer.
 
 ## 🎯 Design Philosophy
 
 ### Orthogonal Classification
 
-The ontology uses two independent dimensions:
+The ontology uses two independent dimensions to classify every concept:
 
-| Physicality | Role | → Result |
-|-------------|------|----------|
-| Physical | Agent | **PhysicalAgent** (e.g., Human) |
-| Virtual | Agent | **VirtualAgent** (e.g., Avatar) |
-| Hybrid | Agent | **HybridAgent** (e.g., Cyborg) |
-| Physical | Object | **PhysicalObject** (e.g., VR Headset) |
-| Virtual | Object | **VirtualObject** (e.g., 3D Model) |
-| Hybrid | Object | **HybridObject** (e.g., Digital Twin) |
-| ... | ... | ... (9 total combinations) |
+| Physicality | Role | → Inferred Class | Example |
+|---|---|---|---|
+| Physical | Object | **PhysicalObject** | VR Headset |
+| Virtual | Agent | **VirtualAgent** | Avatar |
+| Hybrid | Object | **HybridObject** | Digital Twin |
+| *(...and 6 other combinations)* | | |
 
-This allows:
-- Natural multiple inheritance
-- Automatic classification by reasoners
-- Clean separation of concerns
+This design allows for powerful automated classification and ensures a clean separation of concerns.
 
 ### Logseq-Native Format
 
-Each concept is defined in a pure Logseq outline format:
+Each concept is defined in a human-readable Logseq outline, which is then parsed by the extractor.
 
 ```markdown
 - ### OntologyBlock
@@ -127,11 +128,8 @@ Each concept is defined in a pure Logseq outline format:
 	- owl:role:: Agent
 	- owl:inferred-class:: mv:VirtualAgent
 	- #### Relationships
-	  id:: avatar-relationships
 		- has-part:: [[Visual Mesh]], [[Animation Rig]]
-		- requires:: [[3D Rendering Engine]]
 	- #### OWL Axioms
-	  id:: avatar-owl-axioms
 	  collapsed:: true
 		- ```clojure
 		  Declaration(Class(mv:Avatar))
@@ -142,282 +140,34 @@ Each concept is defined in a pure Logseq outline format:
 	- Human-readable description and examples...
 ```
 
-**Benefits:**
-- ✅ **Tidy**: Everything collapses into ### OntologyBlock
-- ✅ **Queryable**: `metaverseOntology:: true` tag enables Logseq queries
-- ✅ **Referenceable**: Section IDs allow block references
-- ✅ **Readable**: Clojure syntax highlighting for OWL code
-- ✅ **Extractable**: Parser extracts properties and OWL blocks
-- ✅ **Documented**: Human context in "About" section
-- ✅ **Linked**: WikiLinks create knowledge graph
-
-## 📚 Documentation
-
-### Getting Started
-| Document | Description |
-|----------|-------------|
-| [QUICKSTART.md](docs/guides/QUICKSTART.md) | Get started in 5 minutes |
-| [MIGRATION_GUIDE.md](docs/guides/MIGRATION_GUIDE.md) | How to migrate VisioningLab concepts |
-
-### Reference
-| Document | Description |
-|----------|-------------|
-| [TEMPLATE.md](docs/reference/TEMPLATE.md) | Standard concept format template |
-| [FORMAT_STANDARDIZED.md](docs/reference/FORMAT_STANDARDIZED.md) | Complete format specification |
-| [URIMapping.md](docs/reference/URIMapping.md) | Wikilink to IRI conversion rules |
-| [LOGSEQ_TAG_USAGE.md](docs/reference/LOGSEQ_TAG_USAGE.md) | Using metaverseOntology tag for queries |
-
-### Additional Resources
-| Document | Description |
-|----------|-------------|
-| [CONSOLIDATED_KNOWLEDGEBASE.md](docs/CONSOLIDATED_KNOWLEDGEBASE.md) | Complete project overview |
-| [FORWARD_IMPLEMENTATION_PLAN.md](docs/FORWARD_IMPLEMENTATION_PLAN.md) | Future enhancements roadmap |
-| [SOLUTION_ARCHITECTURE_STRATEGY.md](docs/SOLUTION_ARCHITECTURE_STRATEGY.md) | Technical architecture details |
-
-### Tools
-| Document | Description |
-|----------|-------------|
-| [logseq-owl-extractor/README.md](logseq-owl-extractor/README.md) | Extractor tool documentation |
-
-## 🧪 Example Concepts
-
-### [Avatar.md](Avatar.md) - VirtualAgent
-
-**Classification:**
-- `owl:physicality:: VirtualEntity`
-- `owl:role:: Agent`
-- `owl:inferred-class:: mv:VirtualAgent` ✅
-
-**Key Properties:**
-- Represents exactly one user or AI agent
-- Requires 3D Rendering Engine
-- Enables User Embodiment and Social Presence
-- Has parts: Visual Mesh, Animation Rig
-
-**OWL Axioms:**
-```owl
-Declaration(Class(mv:Avatar))
-SubClassOf(mv:Avatar mv:VirtualEntity)
-SubClassOf(mv:Avatar mv:Agent)
-SubClassOf(mv:Avatar
-  ObjectExactCardinality(1 mv:represents mv:Agent)
-)
-```
-
-➡️ **Reasoner infers:** `Avatar ⊑ VirtualAgent`
-
----
-
-### [DigitalTwin.md](DigitalTwin.md) - HybridObject
-
-**Classification:**
-- `owl:physicality:: HybridEntity`
-- `owl:role:: Object`
-- `owl:inferred-class:: mv:HybridObject` ✅
-
-**Key Properties:**
-- Binds physical entity to virtual representation
-- Synchronizes data in real-time
-- Requires IoT sensors and data streams
-- Implemented in Infrastructure Layer
-
-**OWL Axioms:**
-```owl
-Declaration(Class(mv:DigitalTwin))
-SubClassOf(mv:DigitalTwin mv:HybridEntity)
-SubClassOf(mv:DigitalTwin mv:Object)
-SubClassOf(mv:DigitalTwin
-  ObjectExactCardinality(1 mv:synchronizesWith mv:PhysicalEntity)
-)
-```
-
-➡️ **Reasoner infers:** `DigitalTwin ⊑ HybridObject`
-
----
-
-### [VisioningLab/Game Engine.md](VisioningLab/Game%20Engine.md) - VirtualObject
-
-**Classification:**
-- `owl:physicality:: VirtualEntity`
-- `owl:role:: Object`
-- `owl:inferred-class:: mv:VirtualObject` ✅
-
-**Key Properties:**
-- Software platform for real-time 3D experiences
-- Has parts: Rendering Pipeline, Physics Engine, Asset Manager
-- Belongs to InfrastructureDomain and CreativeMediaDomain
-
-➡️ **Reasoner infers:** `GameEngine ⊑ VirtualObject`
-
-## ✅ Validation Tests
-
-The ontology includes test cases for:
-
-- ✅ **Inference**: Avatar → VirtualAgent classification
-- ✅ **Consistency**: Valid Digital Twin with proper bindings
-- ⚠️ **Inconsistency Detection**: Digital Twin missing required binding
-- ❌ **Disjointness Violation**: Entity in both Physical and Virtual
-
-See [ValidationTests.md](ValidationTests.md) for details.
-
-## 💡 Use Cases
-
-### 1. Metaverse Interoperability Standards
-- Define common vocabulary for cross-platform metaverse systems
-- Enable semantic interoperability between virtual worlds
-- Support ETSI and ISO metaverse standardization efforts
-
-### 2. Knowledge Graph Construction
-- Build queryable knowledge base of metaverse concepts
-- Link related concepts through formal relationships
-- Support semantic search and discovery
-
-### 3. Application Development
-- Reference ontology for metaverse platform architects
-- Semantic validation of system designs
-- Documentation and communication tool for teams
-
-### 4. Research & Analysis
-- Classify emerging metaverse technologies
-- Track evolution of metaverse concepts over time
-- Identify gaps and opportunities in the metaverse stack
-
-### 5. Automated Reasoning
-- Automatically infer concept classifications
-- Detect inconsistencies in system designs
-- Validate architectural constraints
+**Benefits of this approach**:
+*   **Human-Readable**: Easy to browse and edit in Logseq.
+*   **Machine-Readable**: The Rust tool reliably extracts formal axioms.
+*   **Linked Data**: `[[Wikilinks]]` create a connected knowledge graph within Logseq.
+*   **Documented**: Formal definitions live alongside rich, human-readable context.
 
 ## 🔧 Technology Stack
 
 | Component | Technology | Purpose |
-|-----------|-----------|---------|
+|---|---|---|
 | **Ontology Language** | OWL 2 DL | Formal knowledge representation |
-| **Syntax** | OWL Functional Syntax | Machine-readable axioms |
-| **Source Format** | Logseq Markdown | Human-readable editing |
-| **Parser/Validator** | horned-owl (Rust) | OWL parsing and validation |
-| **Reasoner** | HermiT, Pellet, whelk-rs | Automatic classification and consistency checking |
-| **Knowledge Editor** | Logseq | Visual outliner for navigation |
-| **Ontology Viewer** | Protégé | GUI for visualizing class hierarchy |
-| **Extraction Tool** | Custom Rust tool | Convert Logseq → OWL |
-| **Version Control** | Git + Markdown | Track changes over time |
-
-## 🛠️ Extractor Tool Features
-
-The `logseq-owl-extractor` Rust tool provides:
-
-- 📝 **Parse Logseq markdown** - Extracts properties and OWL blocks from outline format
-- 🔗 **Combine OWL blocks** - Assembles axioms from multiple concept files
-- 🏗️ **Build complete ontology** - Includes header from OntologyDefinition.md
-- ✅ **Validate syntax** - Uses horned-owl to check OWL 2 DL compliance
-- 🔄 **Convert wikilinks** - Transforms `[[Page Name]]` to `mv:PageName` IRIs
-- 🎯 **Property conversion** - Optional conversion of Logseq properties to OWL axioms
-- 📊 **Two format support** - Handles both code fence and direct indented OWL blocks
-- 🔍 **Error reporting** - Clear messages for syntax errors with line numbers
-
-**Example usage:**
-```bash
-logseq-owl-extractor --input . --output ontology.ofn --validate
-```
-
-See [logseq-owl-extractor/README.md](logseq-owl-extractor/README.md) for full documentation.
-
-## 📊 Current Status
-
-**Production Ready** - Full 281-concept metaverse ontology with OWL 2 DL compliance
-
-| Component | Status |
-|-----------|--------|
-| Metaverse Concepts | ✅ 281 concepts fully migrated |
-| OWL Validation | ✅ Zero errors, OWL 2 DL compliant |
-| Multi-format Export | ✅ OWL/XML, Turtle, JSON-LD |
-| Visualization | ✅ WebVOWL ready |
-| Documentation | ✅ Complete |
+| **Source Format** | Logseq Markdown | Human-readable editing and documentation |
+| **Extraction Tool** | Custom Rust Tool | Converts Logseq markdown to OWL |
+| **Parser/Validator** | horned-owl (Rust) | OWL parsing and syntax validation |
+| **Visualization** | OWL TTL Web Visualizer | Interactive 3D graph exploration |
+| **Version Control** | Git | Tracks changes to the ontology source |
 
 ## 🤝 Contributing
 
-Contributions welcome! To add a new concept:
+Contributions are highly encouraged! To add or improve a concept:
 
-1. **Use the template**: Copy [docs/reference/TEMPLATE.md](docs/reference/TEMPLATE.md)
-2. **Follow exemplars**: Study [Avatar.md](Avatar.md), [DigitalTwin.md](DigitalTwin.md), or [VisioningLab/Game Engine.md](VisioningLab/Game%20Engine.md)
-3. **Classify correctly**: Use Physicality × Role dimensions (see [docs/guides/MIGRATION_GUIDE.md](docs/guides/MIGRATION_GUIDE.md))
-4. **Add metaverseOntology tag**: Include `metaverseOntology:: true` property
-5. **Validate**: Run the extractor to check OWL syntax
-6. **Submit PR**: Include description of concept and its classification
+1.  **Read the guidelines**: See the full [CONTRIBUTING.md](CONTRIBUTING.md) file.
+2.  **Use the template**: Copy [docs/reference/TEMPLATE.md](docs/reference/TEMPLATE.md).
+3.  **Classify correctly**: Apply the Physicality × Role dimensions.
+4.  **Add the tag**: Ensure `metaverseOntology:: true` is present.
+5.  **Validate your changes**: Run the extractor tool to check for syntax errors.
+6.  **Submit a Pull Request**.
 
-### Adding New Concepts - Quick Checklist
+## 📄 License
 
-- [ ] Filename matches concept name (spaces OK)
-- [ ] ### OntologyBlock heading with `collapsed:: true`
-- [ ] `metaverseOntology:: true` is first property
-- [ ] Unique term-id assigned
-- [ ] Clear definition provided
-- [ ] owl:physicality dimension correct (Physical/Virtual/Hybrid)
-- [ ] owl:role dimension correct (Agent/Object/Process)
-- [ ] owl:inferred-class matches physicality + role
-- [ ] At least one ETSI domain assigned
-- [ ] OWL Axioms in code fence with ```clojure syntax
-- [ ] File extracts successfully with logseq-owl-extractor
-- [ ] Human-readable "About" section included
-
-See [docs/reference/TEMPLATE.md](docs/reference/TEMPLATE.md) for full validation checklist.
-
-## 📖 Learn More
-
-### OWL 2 Resources
-- [OWL 2 Web Ontology Language Primer](https://www.w3.org/TR/owl2-primer/)
-- [OWL 2 Functional Syntax](https://www.w3.org/TR/owl2-syntax/)
-- [horned-owl documentation](https://docs.rs/horned-owl/)
-
-### Metaverse Standards
-- [ETSI GR MEC 039: Multi-access Edge Computing (MEC) Framework](https://www.etsi.org/)
-- [ISO 23247: Automation systems and integration — Digital Twin framework](https://www.iso.org/)
-- [Web3D Consortium - H-Anim](https://www.web3d.org/working-groups/humanoid-animation-h-anim)
-
-### Tools
-- [Protégé](https://protege.stanford.edu/) - Ontology editor
-- [whelk-rs](https://github.com/balhoff/whelk) - Fast OWL 2 EL reasoner in Rust
-- [ROBOT](https://github.com/ontodev/robot) - OWL tool for command line
-
----
-
-## 📄 Licence
-
-This project is licensed under the Mozilla Public Licence 2.0. See the [LICENSE](LICENSE) file for details.
-
----
-
-## 👥 Authors
-
-[John O'Hare](https://www.linkedin.com/in/jjohare/) for [DreamLab - AI Ltd](https://dreamlab-ai.com/) based on [VisioningLab](https://www.visioninglab.com/) [open Metaverse Ontology](/VisioningLab) 
-
-## 🙏 Acknowledgments
-
-- Built with [horned-owl](https://github.com/phillord/horned-owl) by Phillip Lord
-- Inspired by the Logseq knowledge management approach
-- Aligned with ETSI and ISO metaverse standards
-
----
-
-## Part of VisionFlow
-
-![VisionFlow Knowledge Management System](https://raw.githubusercontent.com/DreamLab-AI/VisionFlow/main/visionflow.gif)
-
-This ontology module is part of the VisionFlow Knowledge Management System, located at [https://github.com/DreamLab-AI/VisionFlow](https://github.com/DreamLab-AI/VisionFlow).
-
----
-
-## 🎉 Ready to Explore?
-
-**Visualize the Ontology:**
-1. Download [metaverse-ontology-webvowl.owl](visualization/metaverse-ontology-webvowl.owl)
-2. Visit [WebVOWL](http://www.visualdataweb.de/webvowl/)
-3. Upload and explore 281+ metaverse concepts interactively!
-
-**Additional Documentation:**
-- [Complete Knowledge Base](docs/CONSOLIDATED_KNOWLEDGEBASE.md) - Detailed project overview
-- [Implementation Roadmap](docs/FORWARD_IMPLEMENTATION_PLAN.md) - Future enhancements
-- [Architecture Details](docs/SOLUTION_ARCHITECTURE_STRATEGY.md) - Technical design
-
----
-
-
+This project is licensed under the Mozilla Public License 2.0. See the `LICENSE` file for details.

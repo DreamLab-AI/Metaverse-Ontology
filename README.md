@@ -381,7 +381,7 @@ This project is licensed under the Mozilla Public Licence 2.0. See the [LICENSE]
 
 ## 👥 Authors
 
-VisioningLab and DreamLab - AI Ltd.
+[John O'Hare](https://www.linkedin.com/in/jjohare/) for [DreamLab - AI Ltd](https://dreamlab-ai.com/) based on [VisioningLab](https://www.visioninglab.com/) [open Metaverse Ontology](/VisioningLab) 
 
 ## 🙏 Acknowledgments
 
@@ -404,4 +404,5 @@ VisioningLab and DreamLab - AI Ltd.
 - [Architecture Details](docs/SOLUTION_ARCHITECTURE_STRATEGY.md) - Technical design
 
 ---
+
 

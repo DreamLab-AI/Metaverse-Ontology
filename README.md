@@ -11,6 +11,13 @@ A formal ontology for metaverse concepts using an innovative hybrid approach tha
 - **Dual Purpose**: Human-readable in Logseq, machine-extractable for reasoners
 - **ETSI Aligned**: Domain classification based on ETSI metaverse standards
 
+## 🖼️ Visual Overview
+
+![Ontology Visualization](docs/Screenshot%202025-10-15%20132107.png)
+![Ontology Visualization](docs/Screenshot%202025-10-15%20144107.png)
+![Ontology Visualization](docs/Screenshot%202025-10-16%20130730.png)
+![Ontology Visualization](docs/Screenshot%202025-10-16%20130809.png)
+
 ## 📁 Project Structure
 
 ```
